@@ -63,12 +63,6 @@
     }
     nav a:hover { color: var(--accent); text-shadow: 0 0 8px rgba(0, 255, 65, 0.5); }
 
-    @media (max-width: 768px) {
-      nav { width: 90%; padding: 0.8rem 1rem; overflow-x: auto;}
-      nav ul { gap: 1rem; }
-      nav a { font-size: 0.7rem; }
-    }
-
     /* ─── CENTERED COMMAND HERO ─── */
     .hero-centered { 
       position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 2rem 4rem; max-width: 900px; margin: 0 auto; text-align: center;
@@ -101,7 +95,6 @@
       font-size: 1.15rem; color: var(--text); margin-bottom: 3rem; max-width: 700px; animation: fadeDown .8s .2s ease both; line-height: 1.8;
     }
 
-    /* Horizontal Stats Row */
     .hero-stats-row { 
       display: flex; gap: 1.5rem; margin-bottom: 3rem; animation: fadeDown .9s .3s ease both; flex-wrap: wrap; justify-content: center; width: 100%;
     }
@@ -148,20 +141,6 @@
     }
     .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1); }
     
-    .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-    .module-icon { font-size: 1.8rem; background: rgba(0, 255, 65, 0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
-    .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.3rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
-    
-    .module-content p { font-size: .95rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
-
-    /* Specific Module Sizings */
-    .col-span-12 { grid-column: span 12; }
-    .col-span-8  { grid-column: span 8; }
-    .col-span-6  { grid-column: span 6; }
-    .col-span-4  { grid-column: span 4; }
-    
-    /* ─── TERMINAL WIDGET (Moved into grid) ─── */
     .terminal-window { 
       width: 100%; background: rgba(0, 5, 0, 0.9); border-radius: 4px; border: 1px solid var(--accent2); overflow: hidden; box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05);
     }
@@ -171,43 +150,44 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
     .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); margin-left: auto; margin-right: auto; text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);}
     .terminal-body { padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .85rem; line-height: 1.8; color: var(--accent); min-height: 180px;}
-    
-    .t-prompt { color: var(--heading); font-weight: bold; }
-    .t-cmd    { color: var(--accent); }
-    .t-output { color: var(--text); }
-    .t-comment{ color: var(--muted); }
 
     /* ─── SKILLS MATRIX ─── */
-    .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+    .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; }
     .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .9rem; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--accent2); padding-bottom: 0.5rem; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
     
     .skill-item { margin-bottom: 1.5rem; }
-    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: .95rem; font-weight: 500; color: var(--heading); }
-    .skill-info span:last-child { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: .95rem; font-weight: 500; color: var(--heading); }
+    .skill-detail { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-bottom: 0.6rem; text-transform: uppercase; }
     .skill-bar-bg { width: 100%; height: 4px; background: var(--surface2); overflow: hidden; border-radius: 2px;}
     .skill-bar-fill { height: 100%; background: var(--accent); width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 0 10px var(--accent);}
 
-    /* ─── TAGS ─── */
+    .col-span-12 { grid-column: span 12; }
+    .col-span-8  { grid-column: span 8; }
+    .col-span-6  { grid-column: span 6; }
+    .col-span-4  { grid-column: span 4; }
+    
+    .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .module-icon { font-size: 1.8rem; background: rgba(0, 255, 65, 0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
+    .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.3rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
+    .module-content p { font-size: .95rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
+
     .tag-container { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
     .tag { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 600; padding: .3rem .8rem; border-radius: 2px; background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
     .tag.primary { background: rgba(0, 255, 65, 0.1); color: var(--accent); border-color: var(--accent2); box-shadow: inset 0 0 5px rgba(0, 255, 65, 0.2);}
 
-    /* ─── CULINARY SPOTLIGHT ─── */
     .culinary-image-container { width: 100%; height: 100%; min-height: 250px; overflow: hidden; border-radius: 4px; border: 1px solid var(--accent2); }
     .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .module:hover .culinary-image-container img { transform: scale(1.05); }
 
-    /* ─── WRITEUPS SPECIFIC ─── */
     .writeup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 1rem;}
     .writeup-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.3rem; }
     .writeup-platform { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
     .badge-placeholder { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border: 1px dashed var(--accent2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.5rem;}
-    .badge-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px;} 
     .writeup-desc { font-size: .95rem; color: var(--text); margin-bottom: 2rem; flex: 1;}
     .btn-writeup { align-self: flex-start; background: transparent; border: 1px solid var(--accent2); color: var(--accent); padding: .5rem 1.2rem; font-size: .8rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; text-decoration: none;}
     .btn-writeup:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); color: var(--heading);}
 
-    /* ─── EXPERIENCE LIST ─── */
     .exp-list { display: flex; flex-direction: column; gap: 2rem; }
     .exp-item { padding-bottom: 2rem; border-bottom: 1px dashed var(--border); }
     .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -219,34 +199,21 @@
     .exp-details li { margin-bottom: 0.5rem; }
     .exp-details li::marker { color: var(--accent2); }
 
-    /* ─── CERTIFICATIONS ─── */
     .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.5rem; margin-bottom: 1rem;}
-    .cert-module:last-child { margin-bottom: 0; }
-    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
+    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0;}
     .cert-info h4 { font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .cert-info p { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
     .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; display: inline-block;}
     .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.2rem 0.5rem; border: 1px solid rgba(245, 158, 11, 0.3); }
 
-    /* ─── CONTACT ─── */
     .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;}
     .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: rgba(10, 20, 10, 0.8); border: 1px solid var(--accent2); padding: 1.5rem 2.5rem; border-radius: 4px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 280px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; backdrop-filter: blur(4px);}
-    .contact-btn svg { width: 26px; height: 26px; color: var(--accent); transition: transform .2s; filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5));}
+    .contact-btn svg { width: 26px; height: 26px; color: var(--accent); transition: transform .2s; }
     .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 255, 65, 0.15);}
-    .contact-btn:hover svg { transform: scale(1.1); }
 
     footer { text-align: center; padding: 3rem; color: var(--muted); font-size: .85rem; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
 
-    @media (max-width: 992px) {
-      .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; }
-    }
-
-    @media (max-width: 768px) {
-      .hero-centered { padding-top: 150px; }
-      .stat-box { min-width: 140px; padding: 1rem; }
-      .module-header { flex-direction: column; text-align: center; }
-      .culinary-image-container { min-height: 200px; margin-top: 1.5rem; }
-    }
+    @media (max-width: 992px) { .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; } }
+    @media (max-width: 768px) { .hero-centered { padding-top: 150px; } .stat-box { min-width: 140px; padding: 1rem; } .module-header { flex-direction: column; text-align: center; } }
   </style>
 </head>
 <body>
@@ -255,15 +222,15 @@
 
 <nav>
   <ul>
-    <li><a href="#skills">Skills Matrix</a></li>
-    <li><a href="#tactical">Tactical Ops</a></li>
-    <li><a href="#writeups">Action Reports</a></li>
-    <li><a href="#personnel">Personnel File</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tactical">Tactical</a></li>
+    <li><a href="#writeups">Reports</a></li>
+    <li><a href="#personnel">Personnel</a></li>
   </ul>
 </nav>
 
 <header class="hero-centered">
-  <div class="profile-container" title="System Online">
+  <div class="profile-container">
     <img src="./profile-photo.jpg" alt="Andrew Ang" class="profile-img">
   </div>
   
@@ -278,18 +245,9 @@
   </p>
 
   <div class="hero-stats-row">
-    <div class="stat-box">
-      <div class="stat-num" data-count="4">0</div>
-      <div class="stat-label">Core Projects</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num" data-count="5">0</div>
-      <div class="stat-label">Certs & Badges</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num" data-count="8">0<span>+</span></div>
-      <div class="stat-label">Years Ops Exp</div>
-    </div>
+    <div class="stat-box"><div class="stat-num" data-count="4">0</div><div class="stat-label">Core Projects</div></div>
+    <div class="stat-box"><div class="stat-num" data-count="5">0</div><div class="stat-label">Certs & Badges</div></div>
+    <div class="stat-box"><div class="stat-num" data-count="8">0<span>+</span></div><div class="stat-label">Years Ops Exp</div></div>
   </div>
 
   <div class="hero-cta">
@@ -297,7 +255,6 @@
     <a class="btn btn-outline" href="#contact">Establish Comm Link</a>
   </div>
 </header>
-
 
 <section id="skills">
   <div class="reveal">
@@ -315,45 +272,41 @@
           
           <div class="skill-item">
             <div class="skill-info"><span>Vulnerability Patching</span> <span>85%</span></div>
+            <span class="skill-detail">(Meticulous Eye for Technical Debt and Risk)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
           </div>
           
           <div class="skill-item">
             <div class="skill-info"><span>Web Server Hardening</span> <span>80%</span></div>
+            <span class="skill-detail">(Structured and Disciplined Implementation)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="80"></div></div>
           </div>
           
           <div class="skill-item">
             <div class="skill-info"><span>WAF Configuration</span> <span>75%</span></div>
+            <span class="skill-detail">(Analytical Mindset for Traffic Analysis)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="75"></div></div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-info"><span>Protocol Encryption (FTPS)</span> <span>70%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70"></div></div>
           </div>
         </div>
 
         <div class="skill-category">
-          <h4>// Operational Security & Incident Response</h4>
+          <h4>// Operational Security & IR</h4>
           
           <div class="skill-item">
             <div class="skill-info"><span>Incident Management</span> <span>90%</span></div>
+            <span class="skill-detail">(Calm Under Pressure / Command Experience)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="90"></div></div>
           </div>
           
           <div class="skill-item">
             <div class="skill-info"><span>Threat De-escalation</span> <span>85%</span></div>
-            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-info"><span>On-scene Investigations</span> <span>85%</span></div>
+            <span class="skill-detail">(Shows Empathy and Quick on my Feet)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
           </div>
           
           <div class="skill-item">
             <div class="skill-info"><span>High-Stress Multitasking</span> <span>95%</span></div>
+            <span class="skill-detail">(Adaptive Personality in Fast-Paced Environments)</span>
             <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="95"></div></div>
           </div>
         </div>
@@ -371,98 +324,36 @@
   </div>
 
   <div class="bento-grid">
-
     <div class="module col-span-4 reveal reveal-delay-1" style="padding: 0; background: transparent; border: none; box-shadow: none;">
-      <div class="terminal-window" style="height: 100%;">
-        <div class="terminal-bar">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <span class="terminal-title">System_Status</span>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-        </div>
-      </div>
+      <div class="terminal-window" style="height: 100%;"><div class="terminal-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="terminal-title">System_Status</span></div><div class="terminal-body" id="terminal-body"></div></div>
     </div>
 
     <div class="module col-span-8 reveal reveal-delay-2">
-      <div class="module-header">
-        <div class="module-icon">🛡️</div>
-        <div class="module-title">
-          <h3>Enterprise Infrastructure Defense</h3>
-          <div class="module-subtitle">Cripton.com.sg Web Server Hardening</div>
-        </div>
-      </div>
-      <div class="module-content">
-        <p>Led internal security remediation. Identified and patched critical vulnerabilities on a live corporate web server. Transitioned legacy FTP to encrypted FTPS, and implemented strict WAF rules to block user enumeration and automated brute-forcing.</p>
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">WAF Config</span>
-        <span class="tag primary">Brute-Force Mitigation</span>
-        <span class="tag">Protocol Security</span>
-      </div>
+      <div class="module-header"><div class="module-icon">🛡️</div><div class="module-title"><h3>Infrastructure Defense</h3><div class="module-subtitle">Cripton.com.sg Web Hardening</div></div></div>
+      <div class="module-content"><p>Led internal security remediation. Identified and patched critical vulnerabilities on a live corporate web server. Transitioned legacy FTP to encrypted FTPS, and implemented strict WAF rules to block user enumeration and automated brute-forcing.</p></div>
+      <div class="tag-container"><span class="tag primary">WAF Config</span><span class="tag primary">FTPS Migration</span><span class="tag">Patch Mgmt</span></div>
     </div>
 
     <div class="module col-span-6 reveal reveal-delay-1">
-      <div class="module-header">
-        <div class="module-icon">🌐</div>
-        <div class="module-title">
-          <h3>Threat Intel & Network Security</h3>
-          <div class="module-subtitle">Security Research & Analysis</div>
-        </div>
-      </div>
-      <div class="module-content">
-        <p>Conducted extensive research and presentation on the modern cybersecurity threat landscape. Mapped malware taxonomies, Advanced Persistent Threats (APTs), supply chain vulnerabilities, and analyzed wireless network exploitation techniques.</p>
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">Threat Landscape</span>
-        <span class="tag">APTs</span>
-        <span class="tag">WiFi Security</span>
-      </div>
+      <div class="module-header"><div class="module-icon">🌐</div><div class="module-title"><h3>Threat Intel Research</h3><div class="module-subtitle">Security Analysis</div></div></div>
+      <div class="module-content"><p>Conducted extensive research and presentation on the modern cybersecurity threat landscape. Mapped malware taxonomies, Advanced Persistent Threats (APTs), and analyzed wireless network exploitation techniques.</p></div>
+      <div class="tag-container"><span class="tag primary">Threat Landscape</span><span class="tag">APTs</span><span class="tag">WiFi Security</span></div>
     </div>
 
     <div class="module col-span-6 reveal reveal-delay-2">
-      <div class="module-header">
-        <div class="module-icon">🤖</div>
-        <div class="module-title">
-          <h3>Mr. Robot CTF</h3>
-          <div class="module-subtitle">TryHackMe Engagement</div>
-        </div>
-      </div>
-      <div class="module-content">
-        <p>Successfully executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Fully documented the engagement with step-by-step visual evidence logs. Gained practical, hands-on experience in vulnerability enumeration and real-world attacker methodologies.</p>
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">Root Compromise</span>
-        <span class="tag">Enumeration</span>
-        <span class="tag">Documentation</span>
-      </div>
+      <div class="module-header"><div class="module-icon">🤖</div><div class="module-title"><h3>Mr. Robot CTF</h3><div class="module-subtitle">TryHackMe Engagement</div></div></div>
+      <div class="module-content"><p>Executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Fully documented the engagement with step-by-step visual evidence logs. Gained experience in Wordpress exploitation and privilege escalation.</p></div>
+      <div class="tag-container"><span class="tag primary">Root Compromise</span><span class="tag">Enumeration</span><span class="tag">Documentation</span></div>
     </div>
 
     <div class="module col-span-12 reveal reveal-delay-3" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 3rem;">
       <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
-        <div class="module-header">
-          <div class="module-icon">🍍</div>
-          <div class="module-title">
-            <h3>Product R&D Commercialization</h3>
-            <div class="module-subtitle">Entrepreneurial Initiative</div>
-          </div>
-        </div>
-        <div class="module-content">
-          <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
-        </div>
-        <div class="tag-container">
-          <span class="tag primary">Process Iteration</span>
-          <span class="tag">Product Lifecycle</span>
-        </div>
+        <div class="module-header"><div class="module-icon">🍍</div><div class="module-title"><h3>Culinary Commercialization</h3><div class="module-subtitle">Entrepreneurial Initiative</div></div></div>
+        <div class="module-content"><p>Developed original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and commercialized them. Showcases process iteration from concept to final market delivery—proving initiative and quality control.</p></div>
+        <div class="tag-container"><span class="tag primary">Process Iteration</span><span class="tag">Product R&D</span></div>
       </div>
-      <div style="flex: 1; min-width: 300px;">
-        <div class="culinary-image-container">
-          <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
-        </div>
-      </div>
+      <div style="flex: 1; min-width: 300px;"><div class="culinary-image-container"><img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D"></div></div>
     </div>
-
   </div>
 </section>
 
@@ -471,76 +362,34 @@
     <div class="section-header">
       <div class="section-label">Module 03</div>
       <h2>Action Reports & Writeups</h2>
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; max-width: 700px; margin-left: auto; margin-right: auto;">// Detailed HTML execution logs and methodology walkthroughs. Progressing from foundational infrastructure to advanced offensive operations and real-world defensive deployment.</p>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem;">// Detailed HTML execution logs and methodology walkthroughs.</p>
     </div>
   </div>
 
   <div class="bento-grid">
-    
     <div class="module col-span-6 reveal reveal-delay-1">
-      <div class="writeup-header">
-        <div class="writeup-title">
-          <h3>[01] Linux Fundamentals</h3>
-          <div class="writeup-platform">TryHackMe Engagement</div>
-        </div>
-        <div class="badge-placeholder" title="Add Badge Image Here">
-          🐧
-        </div>
-      </div>
-      <div class="writeup-desc">
-        Methodology log covering core OS functions, privilege management, system administration, and foundational Linux defensive operations essential for SOC analysts.
-      </div>
+      <div class="writeup-header"><div class="writeup-title"><h3>[01] Linux Fundamentals</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🐧</div></div>
+      <div class="writeup-desc">Methodology log covering core OS functions, privilege management, and system administration essential for SOC analysts.</div>
       <a href="#" class="btn-writeup">> Access Report</a>
     </div>
 
     <div class="module col-span-6 reveal reveal-delay-2">
-      <div class="writeup-header">
-        <div class="writeup-title">
-          <h3>[02] Web Architecture</h3>
-          <div class="writeup-platform">TryHackMe Engagement</div>
-        </div>
-        <div class="badge-placeholder" title="Add Badge Image Here">
-          🌐
-        </div>
-      </div>
-      <div class="writeup-desc">
-        Deep dive execution report on "Putting it all Together", focusing on the mechanics and security implications of enterprise CDNs, load balancers, and Virtual Hosts.
-      </div>
+      <div class="writeup-header"><div class="writeup-title"><h3>[02] Web Architecture</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🌐</div></div>
+      <div class="writeup-desc">Deep dive execution report on enterprise CDNs, load balancers, and Virtual Hosts.</div>
       <a href="#" class="btn-writeup">> Access Report</a>
     </div>
 
     <div class="module col-span-6 reveal reveal-delay-1">
-      <div class="writeup-header">
-        <div class="writeup-title">
-          <h3>[03] Mr. Robot Boot-to-Root</h3>
-          <div class="writeup-platform">TryHackMe Engagement</div>
-        </div>
-        <div class="badge-placeholder" title="Add Badge Image Here">
-          🤖
-        </div>
-      </div>
-      <div class="writeup-desc">
-        Complete step-by-step penetration testing report. Covers nmap enumeration, Wordpress credential brute-forcing, PHP reverse shell injection, and privilege escalation to root.
-      </div>
+      <div class="writeup-header"><div class="writeup-title"><h3>[03] Mr. Robot Boot-to-Root</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🤖</div></div>
+      <div class="writeup-desc">Pentesting report covering nmap enumeration, Wordpress brute-forcing, and escalation to root.</div>
       <a href="#" class="btn-writeup">> Access Report</a>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-2" style="border-color: var(--accent); box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05);">
-      <div class="writeup-header">
-        <div class="writeup-title">
-          <h3 style="color: var(--accent);">[04] Cripton Infrastructure Hardening</h3>
-          <div class="writeup-platform">Live Corporate Environment</div>
-        </div>
-        <div class="badge-placeholder" title="Add Badge/Logo Here" style="border-color: var(--accent); color: var(--accent);">
-          🏢
-        </div>
-      </div>
-      <div class="writeup-desc">
-        Comprehensive execution report detailing the mitigation of critical vulnerabilities on Cripton.com.sg. Includes transition from legacy FTP to encrypted FTPS and custom WAF rule configurations to neutralize active brute-force attacks.
-      </div>
+    <div class="module col-span-6 reveal reveal-delay-2" style="border-color: var(--accent);">
+      <div class="writeup-header"><div class="writeup-title"><h3 style="color: var(--accent);">[04] Cripton Infrastructure</h3><div class="writeup-platform">Corporate</div></div><div class="badge-placeholder" style="border-color: var(--accent); color: var(--accent);">🏢</div></div>
+      <div class="writeup-desc">Mitigation of critical vulnerabilities on Cripton.com.sg, including FTPS transition and custom WAF rule configurations.</div>
       <a href="#" class="btn-writeup" style="background: rgba(0, 255, 65, 0.1);">> Access Report</a>
     </div>
-
   </div>
 </section>
 
@@ -553,265 +402,129 @@
   </div>
 
   <div class="bento-grid">
-    
     <div class="module col-span-8 reveal reveal-delay-1">
       <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 2rem; color: var(--heading); border-bottom: 1px dashed var(--accent2); padding-bottom: 1rem;">Operational History</h3>
-      
       <div class="exp-list">
         <div class="exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Sites and Systems Coordinator</div>
-            <div class="exp-date">Oct 2025 – Present</div>
-          </div>
-          <div class="exp-company">Cripton Environmental Engineering (Singapore) Pte Ltd</div>
+          <div class="exp-header"><div class="exp-role">Sites and Systems Coordinator</div><div class="exp-date">Oct 2025 – Present</div></div>
+          <div class="exp-company">Cripton Environmental Engineering</div>
           <ul class="exp-details">
-            <li>Led the Web Server Hardening Project, mitigating critical security vulnerabilities on the live company web server.</li>
-            <li>Configured WAF rules and rate-limiting/login lockdown policies to neutralize Hydra-style brute-force attacks.</li>
-            <li>Manage tender submissions and documentation for key projects, including NTU vertical solar panels.</li>
+            <li>Led Web Server Hardening Project, mitigating security risks on live corporate servers.</li>
+            <li>Configured WAF rules and rate-limiting policies to neutralize brute-force attacks.</li>
           </ul>
         </div>
-
         <div class="exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Barista / Kitchen Supervisor</div>
-            <div class="exp-date">2021 – Present</div>
-          </div>
-          <div class="exp-company">Various F&B (Bread Butter Jam, AlphaHire, Hundred Acre Creamery)</div>
+          <div class="exp-header"><div class="exp-role">Barista / Kitchen Supervisor</div><div class="exp-date">2021 – Present</div></div>
+          <div class="exp-company">Various F&B Establishments</div>
           <ul class="exp-details">
-            <li>Maintained operational efficiency and inventory control in high-pressure, fast-paced environments.</li>
-            <li>Transitioned to a part-time role to support career development and education in cybersecurity.</li>
+            <li>Maintained high operational standards and inventory control in fast-paced environments.</li>
           </ul>
         </div>
-
         <div class="exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Neighbourhood Police Officer (NS)</div>
-            <div class="exp-date">2018 – 2020</div>
-          </div>
+          <div class="exp-header"><div class="exp-role">Neighbourhood Police Officer (NS)</div><div class="exp-date">2018 – 2020</div></div>
           <div class="exp-company">Singapore Police Force</div>
           <ul class="exp-details">
-            <li>Managed dynamic, high-stress on-site incidents and conducted scene investigations adhering to strict legal protocols.</li>
-            <li>Awarded the SPF CMDR Operational Excellence Award (Q3 2019) for exceptional service and threat de-escalation.</li>
+            <li>Awarded SPF CMDR Operational Excellence Award (Q3 2019) for service and incident de-escalation.</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="col-span-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
-      <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent); text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);">Credentials</h3>
-      
-      <div class="module cert-module reveal reveal-delay-2">
-        <div class="cert-icon">💻</div>
-        <div class="cert-info">
-          <span class="cert-status pending">TESTING: APRIL 26, 2026</span>
-          <h4>Certified Ethical Hacker (CEH)</h4>
-          <p>MAGES Institute of Excellence</p>
-        </div>
-      </div>
-
-      <div class="module cert-module reveal reveal-delay-3">
-        <div class="cert-icon">🚩</div>
-        <div class="cert-info">
-          <span class="cert-status">VERIFIED (2024)</span>
-          <h4>TISC Participation Badge</h4>
-          <p>The InfoSec Challenge</p>
-        </div>
-      </div>
-
-      <div class="module cert-module reveal reveal-delay-1">
-        <div class="cert-icon">🔒</div>
-        <div class="cert-info">
-          <span class="cert-status">VERIFIED (2024)</span>
-          <h4>Infocomm Technology Cert</h4>
-          <p>PSB Academy</p>
-        </div>
-      </div>
-
-      <div class="module cert-module reveal reveal-delay-2">
-        <div class="cert-icon">🛡️</div>
-        <div class="cert-info">
-          <span class="cert-status">VERIFIED (2023)</span>
-          <h4>Certified CSCU v3</h4>
-          <p>EC-Council</p>
-        </div>
-      </div>
-
-      <div class="module cert-module reveal reveal-delay-3">
-        <div class="cert-icon">🥐</div>
-        <div class="cert-info">
-          <span class="cert-status">VERIFIED (2021)</span>
-          <h4>Diploma in Pastry & Baking</h4>
-          <p>WSQ</p>
-        </div>
-      </div>
+      <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent);">Credentials</h3>
+      <div class="module cert-module reveal reveal-delay-2"><div class="cert-icon">💻</div><div class="cert-info"><span class="cert-status pending">TESTING: APRIL 26</span><h4>CEH Candidate</h4><p>MAGES Institute</p></div></div>
+      <div class="module cert-module reveal reveal-delay-3"><div class="cert-icon">🚩</div><div class="cert-info"><span class="cert-status">VERIFIED</span><h4>TISC 2024 Badge</h4><p>InfoSec Challenge</p></div></div>
+      <div class="module cert-module reveal reveal-delay-1"><div class="cert-icon">🛡️</div><div class="cert-info"><span class="cert-status">VERIFIED</span><h4>Certified CSCU v3</h4><p>EC-Council</p></div></div>
     </div>
-
   </div>
 </section>
 
 <section id="contact">
-  <div class="reveal">
-    <div class="section-header" style="text-align: center;">
-      <div class="section-label">Module 05</div>
-      <h2>Establish Comm Link</h2>
-    </div>
-  </div>
-
+  <div class="reveal"><div class="section-header"><h2>Establish Comm Link</h2></div></div>
   <div class="contact-grid reveal">
-    <a class="contact-btn" href="mailto:andrew4ng@hotmail.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-      andrew4ng@hotmail.com
-    </a>
-    
-    <a class="contact-btn" href="tel:+6592295701">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-      +65 9229 5701
-    </a>
-
-    <a class="contact-btn" href="https://linkedin.com/in/4ndrew" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      linkedin.com/in/4ndrew
-    </a>
+    <a class="contact-btn" href="mailto:andrew4ng@hotmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>andrew4ng@hotmail.com</a>
+    <a class="contact-btn" href="tel:+6592295701"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+65 9229 5701</a>
+    <a class="contact-btn" href="https://linkedin.com/in/4ndrew" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>linkedin.com/in/4ndrew</a>
   </div>
 </section>
 
-<footer>
-  >_ Follow the white rabbit. Built for the Blue Team.
-</footer>
+<footer>>_ Follow the white rabbit. Built for the Blue Team.</footer>
 
 <script>
-/* ── Matrix Digital Rain Canvas Background ── */
+/* Matrix Digital Rain */
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ'.split('');
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = [];
-
-  for (let x = 0; x < columns; x++) {
-    drops[x] = 1;
-  }
-
+  const fontSize = 14; const columns = canvas.width / fontSize; const drops = [];
+  for (let x = 0; x < columns; x++) { drops[x] = 1; }
   function draw() {
-    ctx.fillStyle = 'rgba(5, 10, 5, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#00ff41';
-    ctx.font = fontSize + 'px JetBrains Mono';
-
+    ctx.fillStyle = 'rgba(5, 10, 5, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff41'; ctx.font = fontSize + 'px JetBrains Mono';
     for (let i = 0; i < drops.length; i++) {
       const text = chars[Math.floor(Math.random() * chars.length)];
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
       drops[i]++;
     }
     requestAnimationFrame(draw);
   }
-
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
+  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
   draw();
 })();
 
-/* ── Terminal Typewriter ── */
+/* Terminal Typewriter */
 (function() {
   const lines = [
-    { text: 'root@soc_node_01:~# whoami', cls: 't-prompt' },
-    { text: 'andrew_ang', cls: 't-output' },
-    { text: 'root@soc_node_01:~# ./init_defenses.sh', cls: 't-prompt' },
-    { text: '[+] WAF Rules active.', cls: 't-comment' },
-    { text: '[+] Protocol encryption enforced.', cls: 't-comment' },
-    { text: '[+] Ready for incident response.', cls: 't-comment' }
+    { text: 'root@matrix:~# whoami', cls: 't-prompt' },
+    { text: 'andrew', cls: 't-output' },
+    { text: 'root@matrix:~# ./init_soc.sh', cls: 't-prompt' },
+    { text: '[+] Firewall rules loaded.', cls: 't-comment' },
+    { text: '[+] System Status: ONLINE.', cls: 't-comment' }
   ];
-
   const body = document.getElementById('terminal-body');
   let li = 0, ci = 0;
-
   function typeLine() {
-    if (!body) return;
     if (li >= lines.length) return;
     const line = lines[li];
-
     if (ci === 0) {
-      const span = document.createElement('div');
-      span.className = line.cls;
+      const span = document.createElement('div'); span.className = line.cls;
       if(line.cls === 't-prompt') {
           const parts = line.text.split('# ');
           span.innerHTML = `<span style="color:var(--heading);">${parts[0]}#</span> <span style="color:var(--accent);">${parts[1] || ''}</span>`;
-          body.appendChild(span);
-          li++;
-          setTimeout(typeLine, 200);
-          return;
-      } else {
-          span.id = 'cur-line';
-          body.appendChild(span);
-      }
+          body.appendChild(span); li++; setTimeout(typeLine, 200); return;
+      } else { span.id = 'cur-line'; body.appendChild(span); }
     }
-
     const el = document.getElementById('cur-line');
-    if (el && ci < line.text.length) {
-      el.textContent = line.text.slice(0, ci + 1);
-      ci++;
-      setTimeout(typeLine, 30);
-    } else if (el) {
-      el.id = '';
-      li++; ci = 0;
-      setTimeout(typeLine, 300);
-    }
+    if (el && ci < line.text.length) { el.textContent = line.text.slice(0, ci + 1); ci++; setTimeout(typeLine, 30); }
+    else if (el) { el.id = ''; li++; ci = 0; setTimeout(typeLine, 300); }
   }
-
   setTimeout(typeLine, 800);
 })();
 
-/* ── Scroll Reveal ── */
+/* Scroll Reveal & Bars */
 (function() {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { 
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => bar.style.width = bar.dataset.w + '%');
+      }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
-/* ── Skill Bars on Reveal ── */
-(function() {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-          bar.style.width = bar.dataset.w + '%';
-        });
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.skill-matrix').forEach(g => obs.observe(g));
-})();
-
-/* ── Counter Animation ── */
+/* Counter Animation */
 (function() {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
-      let current = 0;
-      const step = Math.ceil(target / 20);
+      const el = e.target; const target = parseInt(el.dataset.count); let current = 0;
       const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.innerHTML = current + suffix;
+        current = Math.min(current + Math.ceil(target / 20), target);
+        el.innerHTML = current + (el.querySelector('span') ? '<span>+</span>' : '');
         if (current >= target) clearInterval(timer);
       }, 50);
       obs.unobserve(el);
@@ -820,21 +533,11 @@
   document.querySelectorAll('[data-count]').forEach(el => obs.observe(el));
 })();
 
-/* ── Anti-Snooping Defenses ── */
-(function() {
-  // Disable right-click context menu
-  document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-  // Disable common developer tools keyboard shortcuts
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'F12') { e.preventDefault(); }
-    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.metaKey && e.altKey && e.key === 'i')) { e.preventDefault(); }
-    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.metaKey && e.altKey && e.key === 'j')) { e.preventDefault(); }
-    if ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u')) { e.preventDefault(); }
-    if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); }
-  });
-})();
+/* Anti-Snooping */
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) e.preventDefault();
+});
 </script>
-
 </body>
 </html>
