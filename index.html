@@ -9,17 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* TryHackMe Inspired Palette */
-      --bg:      #15191e;
-      --surface: #1e242b;
-      --surface2:#283039;
-      --border:  #2f3843;
-      --accent:  #ff4f4f; /* Alert Red */
-      --accent-hover: #ff3333;
-      --accent2: #95c93d; /* Success Green */
-      --text:    #9ba4b5;
-      --heading: #ffffff;
-      --muted:   #6b7687;
+      /* Matrix Inspired Palette */
+      --bg:      #050a05;
+      --surface: #0a140a;
+      --surface2:#142814;
+      --border:  #1f3d1f;
+      --accent:  #00ff41; /* Neon Matrix Green */
+      --accent-hover: #00cc33;
+      --accent2: #008f11; /* Deeper Matrix Green */
+      --text:    #a1cca1;
+      --heading: #e6ffe6;
+      --muted:   #4d804d;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,13 +35,13 @@
 
     /* ─── CANVAS BACKGROUND ─── */
     #bg-canvas { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.4; pointer-events: none; 
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.15; pointer-events: none; 
     }
 
     /* ─── NAV ─── */
     nav { 
       position: fixed; top: 0; left: 0; right: 0; 
-      background: rgba(21, 25, 30, 0.95); 
+      background: rgba(5, 10, 5, 0.95); 
       border-bottom: 1px solid var(--border); 
       backdrop-filter: blur(8px); 
       z-index: 100; display: flex; align-items: center; justify-content: space-between; 
@@ -54,9 +54,9 @@
 
     nav ul { display: flex; gap: 1.5rem; list-style: none; }
     nav a, nav a:link, nav a:visited { 
-      color: var(--text); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; 
+      color: var(--text); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s, text-shadow .2s; 
     }
-    nav a:hover { color: var(--heading); }
+    nav a:hover { color: var(--accent); text-shadow: 0 0 8px rgba(0, 255, 65, 0.5); }
 
     /* ─── HERO ─── */
     .hero { 
@@ -66,12 +66,12 @@
     .hero-right { flex-shrink: 0; width: 340px; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
 
     .hero-badge { 
-      display: inline-flex; align-items: center; gap: .5rem; background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-size: .75rem; font-weight: 600; text-transform: uppercase; padding: .4rem 1rem; border-radius: 6px; margin-bottom: 1.5rem; animation: fadeDown .6s ease both; 
+      display: inline-flex; align-items: center; gap: .5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--accent2); color: var(--accent); font-size: .75rem; font-weight: 600; text-transform: uppercase; padding: .4rem 1rem; border-radius: 4px; margin-bottom: 1.5rem; animation: fadeDown .6s ease both; box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
     }
-    .badge-icon { color: var(--accent2); font-size: 1rem; }
+    .badge-icon { color: var(--accent); font-size: 1rem; }
 
     h1 { 
-      font-family: 'Ubuntu', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--heading); line-height: 1.1; margin-bottom: 1rem; animation: fadeDown .7s .1s ease both; letter-spacing: -1px;
+      font-family: 'Ubuntu', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--heading); line-height: 1.1; margin-bottom: 1rem; animation: fadeDown .7s .1s ease both; letter-spacing: -1px; text-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
     }
     h1 em { font-style: normal; color: var(--accent); }
     
@@ -81,7 +81,7 @@
 
     .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeDown .9s .3s ease both; flex-wrap: wrap; }
     .stat { text-align: left; }
-    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; color: var(--heading); font-weight: 700; line-height: 1; }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; color: var(--heading); font-weight: 700; line-height: 1; text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);}
     .stat-num span { color: var(--accent); }
     .stat-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; margin-top: 0.2rem; }
 
@@ -89,40 +89,40 @@
     .btn { 
       display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .7rem 1.5rem; border-radius: 4px; font-size: .9rem; font-weight: 600; text-decoration: none; transition: all .2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif;
     }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 4px 12px rgba(255, 79, 79, 0.3); }
-    .btn-outline { background: var(--surface2); border: 1px solid var(--border); color: var(--heading); }
-    .btn-outline:hover { background: var(--border); }
+    .btn-primary { background: var(--accent2); color: #fff; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);}
+    .btn-primary:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(0, 255, 65, 0.6); }
+    .btn-outline { background: rgba(0,0,0,0.5); border: 1px solid var(--accent2); color: var(--accent); }
+    .btn-outline:hover { background: var(--surface2); border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);}
 
     /* ─── PROFILE AVATAR ─── */
     .profile-container {
       width: 200px; height: 200px; border-radius: 50%; padding: 4px;
       background: linear-gradient(135deg, var(--accent), var(--surface2));
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
       animation: float 6s ease-in-out infinite;
       overflow: hidden;
     }
     .profile-img { 
       width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg);
-      filter: grayscale(100%); transition: filter .5s ease;
+      filter: grayscale(100%) contrast(120%) sepia(110%) hue-rotate(80deg); transition: filter .5s ease;
     }
     .profile-container:hover .profile-img { filter: grayscale(0%); }
 
     /* ─── TERMINAL / ATTACKBOX ─── */
     .terminal-window { 
-      width: 100%; background: #000000; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 12px 24px rgba(0,0,0,.5); 
+      width: 100%; background: rgba(0, 5, 0, 0.8); border-radius: 4px; border: 1px solid var(--accent2); overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 65, 0.15); backdrop-filter: blur(4px);
     }
     .terminal-bar { 
-      background: var(--surface); padding: .5rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); 
+      background: var(--surface2); padding: .4rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); 
     }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
-    .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--muted); margin-left: auto; margin-right: auto; }
-    .terminal-body { padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; line-height: 1.8; color: #fff;}
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+    .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); margin-left: auto; margin-right: auto; text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);}
+    .terminal-body { padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; line-height: 1.8; color: var(--accent);}
     
-    .t-prompt { color: var(--accent2); font-weight: bold; }
-    .t-cmd    { color: #fff; }
+    .t-prompt { color: var(--heading); font-weight: bold; }
+    .t-cmd    { color: var(--accent); }
     .t-output { color: var(--text); }
-    .t-comment{ color: var(--accent); }
+    .t-comment{ color: var(--muted); }
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
@@ -132,9 +132,9 @@
     .reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; } .reveal-delay-3 { transition-delay: .3s; }
     
     /* ─── SECTIONS ─── */
-    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; border-top: 1px solid var(--border); }
+    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; border-top: 1px dashed var(--border); }
     .section-header { margin-bottom: 3rem; }
-    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; letter-spacing: 0.05em; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; letter-spacing: 0.1em; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);}
     h2 { font-family: 'Ubuntu', sans-serif; font-size: 2.2rem; color: var(--heading); letter-spacing: -0.5px;}
 
     /* ─── MODULAR GRID (Bento Style) ─── */
@@ -146,14 +146,14 @@
     }
     
     .module { 
-      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; 
+      background: rgba(10, 20, 10, 0.8); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; backdrop-filter: blur(4px);
     }
-    .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0, 255, 65, 0.15); }
     
     .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-    .module-icon { font-size: 2rem; background: var(--surface2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border);}
+    .module-icon { font-size: 1.8rem; background: rgba(0, 255, 65, 0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
     .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent2); font-weight: 600; text-transform: uppercase;}
+    .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
     
     .module-content p { font-size: .95rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
 
@@ -165,51 +165,53 @@
     
     /* ─── SKILLS MATRIX ─── */
     .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .85rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem; }
+    .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .85rem; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--accent2); padding-bottom: 0.5rem; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
     
     .skill-item { margin-bottom: 1.2rem; }
-    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: .9rem; font-weight: 500; color: var(--text); }
-    .skill-bar-bg { width: 100%; height: 6px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
-    .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #ff8888); border-radius: 4px; width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: .9rem; font-weight: 500; color: var(--heading); }
+    .skill-info span:last-child { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+    .skill-bar-bg { width: 100%; height: 4px; background: var(--surface2); overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: var(--accent); width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 0 10px var(--accent);}
 
     /* ─── TAGS ─── */
     .tag-container { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
-    .tag { font-size: .75rem; font-weight: 600; padding: .3rem .8rem; border-radius: 4px; background: var(--surface2); color: var(--heading); border: 1px solid var(--border); }
-    .tag.primary { background: rgba(255, 79, 79, 0.1); color: var(--accent); border-color: rgba(255, 79, 79, 0.3); }
+    .tag { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 600; padding: .3rem .8rem; border-radius: 2px; background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .tag.primary { background: rgba(0, 255, 65, 0.1); color: var(--accent); border-color: var(--accent2); box-shadow: inset 0 0 5px rgba(0, 255, 65, 0.2);}
 
     /* ─── CULINARY SPOTLIGHT ─── */
-    .culinary-image-container { width: 100%; height: 200px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; }
-    .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter .5s ease, transform .5s ease; }
+    .culinary-image-container { width: 100%; height: 200px; overflow: hidden; border-radius: 4px; border: 1px solid var(--accent2); margin-bottom: 1rem; }
+    .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(120%) sepia(110%) hue-rotate(80deg); transition: filter .5s ease, transform .5s ease; }
     .module:hover .culinary-image-container img { filter: grayscale(0%); transform: scale(1.05); }
 
     /* ─── EXPERIENCE LIST ─── */
     .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
-    .exp-item { padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .exp-item { padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border); }
     .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
     .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;}
     .exp-role { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); }
-    .exp-company { font-size: .9rem; color: var(--accent); font-weight: 600; }
-    .exp-date { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); background: var(--surface2); padding: 0.2rem 0.6rem; border-radius: 4px; }
-    .exp-details { padding-left: 1.2rem; margin-top: 0.8rem; color: var(--text); font-size: .9rem; }
+    .exp-company { font-size: .9rem; color: var(--accent); font-weight: 600; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
+    .exp-date { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 0.2rem 0.6rem; border: 1px solid var(--accent2); }
+    .exp-details { padding-left: 1.2rem; margin-top: 0.8rem; color: var(--text); font-size: .9rem; list-style-type: square; }
     .exp-details li { margin-bottom: 0.4rem; }
+    .exp-details li::marker { color: var(--accent2); }
 
     /* ─── CERTIFICATIONS ─── */
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.2rem; }
-    .cert-icon { width: 48px; height: 48px; background: var(--surface2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border); flex-shrink: 0;}
+    .cert-icon { width: 48px; height: 48px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
     .cert-info h4 { font-size: 1rem; color: var(--heading); margin-bottom: 0.2rem; }
     .cert-info p { font-size: .85rem; color: var(--muted); margin-bottom: 0; }
-    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.3rem; display: inline-block;}
-    .cert-status.pending { color: var(--accent); background: rgba(255, 79, 79, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; }
+    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--accent); margin-bottom: 0.3rem; display: inline-block;}
+    .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.1rem 0.4rem; border: 1px solid rgba(245, 158, 11, 0.3); }
 
     /* ─── CONTACT ─── */
     .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;}
-    .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); padding: 1.2rem 2rem; border-radius: 8px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 250px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;}
-    .contact-btn svg { width: 24px; height: 24px; color: var(--accent); transition: transform .2s; }
-    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3);}
+    .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: rgba(10, 20, 10, 0.8); border: 1px solid var(--accent2); padding: 1.2rem 2rem; border-radius: 4px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 250px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; backdrop-filter: blur(4px);}
+    .contact-btn svg { width: 24px; height: 24px; color: var(--accent); transition: transform .2s; filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5));}
+    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 255, 65, 0.15);}
     .contact-btn:hover svg { transform: scale(1.1); }
 
-    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
 
     @media (max-width: 992px) {
       .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; }
@@ -244,7 +246,7 @@
 <div class="hero">
   <div class="hero-left">
     <div class="hero-badge">
-      <span class="badge-icon">🎯</span> Target Role: SOC Analyst
+      <span class="badge-icon">⚡</span> Target Role: SOC Analyst
     </div>
 
     <h1>Andrew <br /><em>Ang Guan Sheng</em></h1>
@@ -255,12 +257,12 @@
 
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num" data-count="3">0</div>
+        <div class="stat-num" data-count="4">0</div>
         <div class="stat-label">Core Projects</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count="4">0</div>
-        <div class="stat-label">Certifications</div>
+        <div class="stat-num" data-count="5">0</div>
+        <div class="stat-label">Certifications & Badges</div>
       </div>
       <div class="stat">
         <div class="stat-num" data-count="8">0<span>+</span></div>
@@ -269,7 +271,7 @@
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#skills">View Security Matrix</a>
+      <a class="btn btn-primary" href="#skills">Initialize Matrix</a>
       <a class="btn btn-outline" href="#contact">Establish Comm Link</a>
     </div>
   </div>
@@ -366,24 +368,6 @@
   <div class="bento-grid">
     <div class="module col-span-6 reveal reveal-delay-1">
       <div class="module-header">
-        <div class="module-icon">🤖</div>
-        <div class="module-title">
-          <h3>Mr. Robot CTF</h3>
-          <div class="module-subtitle">TryHackMe Engagement</div>
-        </div>
-      </div>
-      <div class="module-content">
-        <p>Successfully executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Gained practical, hands-on experience in vulnerability enumeration, attack vectors, and understanding real-world attacker methodologies.</p>
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">Root Compromise</span>
-        <span class="tag">Enumeration</span>
-        <span class="tag">Offensive Security</span>
-      </div>
-    </div>
-
-    <div class="module col-span-6 reveal reveal-delay-2">
-      <div class="module-header">
         <div class="module-icon">🛡️</div>
         <div class="module-title">
           <h3>Enterprise Infrastructure Defense</h3>
@@ -395,37 +379,67 @@
       </div>
       <div class="tag-container">
         <span class="tag primary">WAF Config</span>
-        <span class="tag">Patch Management</span>
+        <span class="tag primary">Brute-Force Mitigation</span>
         <span class="tag">Protocol Security</span>
       </div>
     </div>
 
-    <div class="module col-span-12 reveal reveal-delay-3" style="flex-direction: row; flex-wrap: wrap; gap: 2rem;">
-      <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column;">
-        <div class="module-header">
-          <div class="module-icon">🍍</div>
-          <div class="module-title">
-            <h3>Product R&D Commercialization</h3>
-            <div class="module-subtitle">Entrepreneurial Initiative</div>
-          </div>
-        </div>
-        <div class="module-content">
-          <p>Demonstrated strong entrepreneurial drive and process iteration by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them to professional and personal networks. Showcases ability to take a project from initial concept through testing to final market delivery.</p>
-        </div>
-        <div class="tag-container" style="margin-bottom: 1rem;">
-          <span class="tag primary">Process Iteration</span>
-          <span class="tag">Product Lifecycle</span>
-          <span class="tag">Stakeholder Management</span>
+    <div class="module col-span-6 reveal reveal-delay-2">
+      <div class="module-header">
+        <div class="module-icon">🌐</div>
+        <div class="module-title">
+          <h3>Threat Intel & Network Security</h3>
+          <div class="module-subtitle">Security Research & Analysis</div>
         </div>
       </div>
-      
-      <div style="flex: 1; min-width: 300px;">
-        <div class="culinary-image-container">
-          <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
-        </div>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); text-align: center;">// VISUAL ASSET: Final Market-Ready Product</p>
+      <div class="module-content">
+        <p>Conducted extensive research and presentation on the modern cybersecurity threat landscape. Mapped malware taxonomies, Advanced Persistent Threats (APTs), supply chain vulnerabilities, and analyzed wireless network exploitation techniques.</p>
+      </div>
+      <div class="tag-container">
+        <span class="tag primary">Threat Landscape</span>
+        <span class="tag">APTs</span>
+        <span class="tag">WiFi Security</span>
       </div>
     </div>
+
+    <div class="module col-span-6 reveal reveal-delay-3">
+      <div class="module-header">
+        <div class="module-icon">🤖</div>
+        <div class="module-title">
+          <h3>Mr. Robot CTF</h3>
+          <div class="module-subtitle">TryHackMe Engagement</div>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Successfully executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Fully documented the engagement with step-by-step visual evidence logs. Gained practical, hands-on experience in vulnerability enumeration and real-world attacker methodologies.</p>
+      </div>
+      <div class="tag-container">
+        <span class="tag primary">Root Compromise</span>
+        <span class="tag">Enumeration</span>
+        <span class="tag">Documentation</span>
+      </div>
+    </div>
+
+    <div class="module col-span-6 reveal reveal-delay-1" style="display: flex; flex-direction: column;">
+      <div class="module-header">
+        <div class="module-icon">🍍</div>
+        <div class="module-title">
+          <h3>Product R&D Commercialization</h3>
+          <div class="module-subtitle">Entrepreneurial Initiative</div>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
+      </div>
+      <div class="culinary-image-container" style="height: 120px; margin-bottom: 1rem;">
+        <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
+      </div>
+      <div class="tag-container">
+        <span class="tag primary">Process Iteration</span>
+        <span class="tag">Product Lifecycle</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -440,7 +454,7 @@
   <div class="bento-grid">
     
     <div class="module col-span-8 reveal reveal-delay-1">
-      <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 2rem; color: var(--heading); border-bottom: 1px solid var(--border); padding-bottom: 1rem;">Operational History</h3>
+      <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 2rem; color: var(--heading); border-bottom: 1px dashed var(--accent2); padding-bottom: 1rem;">Operational History</h3>
       
       <div class="exp-list">
         <div class="exp-item">
@@ -451,7 +465,7 @@
           <div class="exp-company">Cripton Environmental Engineering (Singapore) Pte Ltd</div>
           <ul class="exp-details">
             <li>Led the Web Server Hardening Project, mitigating critical security vulnerabilities on the live company web server.</li>
-            <li>Configured WAF rules and rate-limiting policies to neutralize automated brute-force attacks.</li>
+            <li>Configured WAF rules and rate-limiting/login lockdown policies to neutralize Hydra-style brute-force attacks.</li>
             <li>Manage tender submissions and documentation for key projects, including NTU vertical solar panels.</li>
           </ul>
         </div>
@@ -483,41 +497,50 @@
     </div>
 
     <div class="col-span-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
-      <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent);">Credentials</h3>
+      <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent); text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);">Credentials</h3>
       
       <div class="module cert-module reveal reveal-delay-2">
         <div class="cert-icon">💻</div>
         <div class="cert-info">
-          <span class="cert-status pending">TESTING: APRIL 2026</span>
+          <span class="cert-status pending">TESTING: APRIL 26, 2026</span>
           <h4>Certified Ethical Hacker (CEH)</h4>
           <p>MAGES Institute of Excellence</p>
         </div>
       </div>
 
       <div class="module cert-module reveal reveal-delay-3">
-        <div class="cert-icon">🔒</div>
+        <div class="cert-icon">🚩</div>
         <div class="cert-info">
-          <span class="cert-status">VERIFIED</span>
-          <h4>Infocomm Technology Cert</h4>
-          <p>PSB Academy (2024)</p>
+          <span class="cert-status">VERIFIED (2024)</span>
+          <h4>TISC Participation Badge</h4>
+          <p>The InfoSec Challenge</p>
         </div>
       </div>
 
       <div class="module cert-module reveal reveal-delay-1">
-        <div class="cert-icon">🛡️</div>
+        <div class="cert-icon">🔒</div>
         <div class="cert-info">
-          <span class="cert-status">VERIFIED</span>
-          <h4>Certified CSCU v3</h4>
-          <p>EC-Council (2023)</p>
+          <span class="cert-status">VERIFIED (2024)</span>
+          <h4>Infocomm Technology Cert</h4>
+          <p>PSB Academy</p>
         </div>
       </div>
 
       <div class="module cert-module reveal reveal-delay-2">
-        <div class="cert-icon">🚩</div>
+        <div class="cert-icon">🛡️</div>
         <div class="cert-info">
-          <span class="cert-status">PARTICIPANT</span>
-          <h4>TISC 2024 Badge</h4>
-          <p>The InfoSec Challenge</p>
+          <span class="cert-status">VERIFIED (2023)</span>
+          <h4>Certified CSCU v3</h4>
+          <p>EC-Council</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-3">
+        <div class="cert-icon">🥐</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED (2021)</span>
+          <h4>Diploma in Pastry & Baking</h4>
+          <p>WSQ</p>
         </div>
       </div>
     </div>
@@ -552,84 +575,64 @@
 </section>
 
 <footer>
-  >_ Built for the Blue Team. Hosted on GitHub Pages.
+  >_ Follow the white rabbit. Hosted on GitHub Pages.
 </footer>
 
 <script>
-/* ── Canvas Background ── */
+/* ── Matrix Digital Rain Canvas Background ── */
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H, nodes = [], RAF;
+  
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ'.split('');
+  const fontSize = 14;
+  const columns = canvas.width / fontSize;
+  const drops = [];
 
-  function Node() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.vx = (Math.random() - .5) * .3;
-    this.vy = (Math.random() - .5) * .3;
-    this.r  = Math.random() * 2 + 1;
-    this.isRed = Math.random() > 0.8;
-  }
-
-  Node.prototype.update = function() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0 || this.x > W) this.vx *= -1;
-    if (this.y < 0 || this.y > H) this.vy *= -1;
-  };
-
-  function init() {
-    nodes = [];
-    const count = Math.min(60, Math.floor(W * H / 18000));
-    for (let i = 0; i < count; i++) nodes.push(new Node());
+  for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
   }
 
   function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const maxDist = 150;
+    // Translucent black background to create trail effect
+    ctx.fillStyle = 'rgba(5, 10, 5, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < nodes.length; i++) {
-      nodes[i].update();
-      ctx.beginPath();
-      ctx.arc(nodes[i].x, nodes[i].y, nodes[i].r, 0, Math.PI * 2);
-      ctx.fillStyle = nodes[i].isRed ? 'rgba(255,79,79,0.6)' : 'rgba(107,118,135,0.4)';
-      ctx.fill();
+    ctx.fillStyle = '#00ff41'; // Matrix green text
+    ctx.font = fontSize + 'px JetBrains Mono';
 
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < maxDist) {
-          const alpha = 0.2 * (1 - d / maxDist);
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = nodes[i].isRed || nodes[j].isRed ? `rgba(255,79,79,${alpha})` : `rgba(107,118,135,${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
       }
+      drops[i]++;
     }
-    RAF = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); init(); });
-  resize(); init(); draw();
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  draw();
 })();
 
 /* ── Terminal Typewriter ── */
 (function() {
   const lines = [
-    { text: 'root@attackbox:~# whoami', cls: 't-prompt' },
+    { text: 'root@matrix:~# whoami', cls: 't-prompt' },
     { text: 'andrew', cls: 't-output' },
-    { text: 'root@attackbox:~# ./status.sh', cls: 't-prompt' },
-    { text: '[+] Security cleared.', cls: 't-comment' },
-    { text: '[+] Ready for deployment.', cls: 't-comment' }
+    { text: 'root@matrix:~# ./init_soc.sh', cls: 't-prompt' },
+    { text: '[+] Bypassing mainframe...', cls: 't-comment' },
+    { text: '[+] Firewall rules loaded.', cls: 't-comment' },
+    { text: '[+] Ready to deploy.', cls: 't-comment' }
   ];
 
   const body = document.getElementById('terminal-body');
@@ -644,7 +647,7 @@
       span.className = line.cls;
       if(line.cls === 't-prompt') {
           const parts = line.text.split('# ');
-          span.innerHTML = `<span style="color:var(--accent);">${parts[0]}#</span> ${parts[1] || ''}`;
+          span.innerHTML = `<span style="color:var(--heading);">${parts[0]}#</span> <span style="color:var(--accent);">${parts[1] || ''}</span>`;
           body.appendChild(span);
           li++;
           setTimeout(typeLine, 200);
