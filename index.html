@@ -6,14 +6,14 @@
   
   <meta name="robots" content="noindex, nofollow">
   
-  <title>Andrew Ang Guan Sheng — Cybersecurity Portfolio</title>
+  <title>Andrew Ang Guan Sheng — SOC Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
       /* Matrix Inspired Palette - Brightened */
-      --bg:      #050a05;
+      --bg:      #030803;
       --surface: #0a140a;
       --surface2:#142814;
       --border:  #1f3d1f;
@@ -46,91 +46,81 @@
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.15; pointer-events: none; 
     }
 
-    /* ─── NAV ─── */
+    /* ─── FLOATING PILL NAV ─── */
     nav { 
-      position: fixed; top: 0; left: 0; right: 0; 
-      background: rgba(5, 10, 5, 0.95); 
-      border-bottom: 1px solid var(--border); 
-      backdrop-filter: blur(8px); 
-      z-index: 100; display: flex; align-items: center; justify-content: space-between; 
-      padding: 0 2rem; height: 60px; 
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(5, 10, 5, 0.85); 
+      border: 1px solid var(--accent2); 
+      backdrop-filter: blur(12px); 
+      z-index: 100; display: flex; align-items: center; justify-content: center; 
+      padding: 0.8rem 2.5rem; border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
     }
-    .nav-brand { 
-      font-family: 'Ubuntu', sans-serif; font-weight: 700; color: var(--heading); font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: .5rem; letter-spacing: -0.5px;
-    }
-    .nav-brand span { color: var(--accent); }
-
-    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    
+    nav ul { display: flex; gap: 2rem; list-style: none; }
     nav a, nav a:link, nav a:visited { 
-      color: var(--text); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s, text-shadow .2s; 
+      color: var(--text); text-decoration: none; font-size: .85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; transition: color .2s, text-shadow .2s; 
     }
     nav a:hover { color: var(--accent); text-shadow: 0 0 8px rgba(0, 255, 65, 0.5); }
 
-    /* ─── HERO ─── */
-    .hero { 
-      position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 100px 2rem 4rem; max-width: 1200px; margin: 0 auto; gap: 4rem; 
-    }
-    .hero-left { flex: 1; max-width: 650px; }
-    .hero-right { flex-shrink: 0; width: 340px; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
-
-    .hero-badge { 
-      display: inline-flex; align-items: center; gap: .5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--accent2); color: var(--accent); font-size: .75rem; font-weight: 600; text-transform: uppercase; padding: .4rem 1rem; border-radius: 4px; margin-bottom: 1.5rem; animation: fadeDown .6s ease both; box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
-    }
-    .badge-icon { color: var(--accent); font-size: 1rem; }
-
-    h1 { 
-      font-family: 'Ubuntu', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--heading); line-height: 1.1; margin-bottom: 1rem; animation: fadeDown .7s .1s ease both; letter-spacing: -1px; text-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-    }
-    h1 em { font-style: normal; color: var(--accent); }
-    
-    .hero-sub { 
-      font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; max-width: 580px; animation: fadeDown .8s .2s ease both; 
+    @media (max-width: 768px) {
+      nav { width: 90%; padding: 0.8rem 1rem; overflow-x: auto;}
+      nav ul { gap: 1rem; }
+      nav a { font-size: 0.7rem; }
     }
 
-    .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeDown .9s .3s ease both; flex-wrap: wrap; }
-    .stat { text-align: left; }
-    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; color: var(--heading); font-weight: 700; line-height: 1; text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);}
-    .stat-num span { color: var(--accent); }
-    .stat-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; margin-top: 0.2rem; }
-
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeDown 1s .4s ease both; }
-    .btn { 
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .7rem 1.5rem; border-radius: 4px; font-size: .9rem; font-weight: 600; text-decoration: none; transition: all .2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+    /* ─── CENTERED COMMAND HERO ─── */
+    .hero-centered { 
+      position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 2rem 4rem; max-width: 900px; margin: 0 auto; text-align: center;
     }
-    .btn-primary { background: var(--accent2); color: #fff; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);}
-    .btn-primary:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(0, 255, 65, 0.6); }
-    .btn-outline { background: rgba(0,0,0,0.5); border: 1px solid var(--accent2); color: var(--accent); }
-    .btn-outline:hover { background: var(--surface2); border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);}
 
-    /* ─── PROFILE AVATAR ─── */
     .profile-container {
-      width: 200px; height: 200px; border-radius: 50%; padding: 4px;
+      width: 140px; height: 140px; border-radius: 50%; padding: 4px;
       background: linear-gradient(135deg, var(--accent), var(--surface2));
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+      margin-bottom: 2rem;
       animation: float 6s ease-in-out infinite;
       overflow: hidden;
     }
     .profile-img { 
-      width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg);
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg);
       transition: transform .5s ease;
     }
     .profile-container:hover .profile-img { transform: scale(1.05); }
 
-    /* ─── TERMINAL / ATTACKBOX ─── */
-    .terminal-window { 
-      width: 100%; background: rgba(0, 5, 0, 0.8); border-radius: 4px; border: 1px solid var(--accent2); overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 65, 0.15); backdrop-filter: blur(4px);
+    .hero-badge { 
+      display: inline-flex; align-items: center; gap: .5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--accent2); color: var(--accent); font-size: .75rem; font-weight: 600; text-transform: uppercase; padding: .4rem 1rem; border-radius: 4px; margin-bottom: 1.5rem; animation: fadeDown .6s ease both; box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.1);
     }
-    .terminal-bar { 
-      background: var(--surface2); padding: .4rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); 
+
+    h1 { 
+      font-family: 'Ubuntu', sans-serif; font-size: clamp(3rem, 6vw, 5rem); color: var(--heading); line-height: 1.1; margin-bottom: 1.5rem; animation: fadeDown .7s .1s ease both; letter-spacing: -1.5px; text-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
     }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
-    .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); margin-left: auto; margin-right: auto; text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);}
-    .terminal-body { padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; line-height: 1.8; color: var(--accent);}
+    h1 em { font-style: normal; color: var(--accent); }
     
-    .t-prompt { color: var(--heading); font-weight: bold; }
-    .t-cmd    { color: var(--accent); }
-    .t-output { color: var(--text); }
-    .t-comment{ color: var(--muted); }
+    .hero-sub { 
+      font-size: 1.15rem; color: var(--text); margin-bottom: 3rem; max-width: 700px; animation: fadeDown .8s .2s ease both; line-height: 1.8;
+    }
+
+    /* Horizontal Stats Row */
+    .hero-stats-row { 
+      display: flex; gap: 1.5rem; margin-bottom: 3rem; animation: fadeDown .9s .3s ease both; flex-wrap: wrap; justify-content: center; width: 100%;
+    }
+    .stat-box { 
+      background: rgba(10, 20, 10, 0.6); border: 1px solid var(--border); padding: 1.5rem 2rem; border-radius: 8px; backdrop-filter: blur(4px); min-width: 180px; transition: border-color 0.3s;
+    }
+    .stat-box:hover { border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; color: var(--heading); font-weight: 700; line-height: 1; text-shadow: 0 0 10px rgba(0, 255, 65, 0.3); margin-bottom: 0.3rem;}
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeDown 1s .4s ease both; }
+    .btn { 
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .8rem 2rem; border-radius: 4px; font-size: .9rem; font-weight: 600; text-decoration: none; transition: all .2s; cursor: pointer; border: none; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .btn-primary { background: var(--accent2); color: #fff; border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);}
+    .btn-primary:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(0, 255, 65, 0.6); transform: translateY(-2px);}
+    .btn-outline { background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { background: var(--surface2); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 65, 0.2); transform: translateY(-2px);}
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
@@ -140,10 +130,10 @@
     .reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; } .reveal-delay-3 { transition-delay: .3s; }
     
     /* ─── SECTIONS ─── */
-    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; border-top: 1px dashed var(--border); }
-    .section-header { margin-bottom: 3rem; }
-    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; letter-spacing: 0.1em; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);}
-    h2 { font-family: 'Ubuntu', sans-serif; font-size: 2.2rem; color: var(--heading); letter-spacing: -0.5px;}
+    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 3.5rem; text-align: center; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .8rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; letter-spacing: 0.15em; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);}
+    h2 { font-family: 'Ubuntu', sans-serif; font-size: 2.5rem; color: var(--heading); letter-spacing: -0.5px;}
 
     /* ─── MODULAR GRID (Bento Style) ─── */
     .bento-grid { 
@@ -154,13 +144,13 @@
     }
     
     .module { 
-      background: rgba(10, 20, 10, 0.8); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; backdrop-filter: blur(4px);
+      background: rgba(10, 20, 10, 0.6); border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; backdrop-filter: blur(8px);
     }
-    .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0, 255, 65, 0.15); }
+    .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1); }
     
     .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
     .module-icon { font-size: 1.8rem; background: rgba(0, 255, 65, 0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
-    .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.3rem; color: var(--heading); margin-bottom: 0.2rem; }
     .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
     
     .module-content p { font-size: .95rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
@@ -171,14 +161,30 @@
     .col-span-6  { grid-column: span 6; }
     .col-span-4  { grid-column: span 4; }
     
-    /* ─── SKILLS MATRIX ─── */
-    .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .85rem; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--accent2); padding-bottom: 0.5rem; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
+    /* ─── TERMINAL WIDGET (Moved into grid) ─── */
+    .terminal-window { 
+      width: 100%; background: rgba(0, 5, 0, 0.9); border-radius: 4px; border: 1px solid var(--accent2); overflow: hidden; box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05);
+    }
+    .terminal-bar { 
+      background: var(--surface2); padding: .4rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); 
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+    .terminal-title { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); margin-left: auto; margin-right: auto; text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);}
+    .terminal-body { padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .85rem; line-height: 1.8; color: var(--accent); min-height: 180px;}
     
-    .skill-item { margin-bottom: 1.2rem; }
-    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: .9rem; font-weight: 500; color: var(--heading); }
+    .t-prompt { color: var(--heading); font-weight: bold; }
+    .t-cmd    { color: var(--accent); }
+    .t-output { color: var(--text); }
+    .t-comment{ color: var(--muted); }
+
+    /* ─── SKILLS MATRIX ─── */
+    .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+    .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .9rem; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--accent2); padding-bottom: 0.5rem; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
+    
+    .skill-item { margin-bottom: 1.5rem; }
+    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: .95rem; font-weight: 500; color: var(--heading); }
     .skill-info span:last-child { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
-    .skill-bar-bg { width: 100%; height: 4px; background: var(--surface2); overflow: hidden; }
+    .skill-bar-bg { width: 100%; height: 4px; background: var(--surface2); overflow: hidden; border-radius: 2px;}
     .skill-bar-fill { height: 100%; background: var(--accent); width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 0 10px var(--accent);}
 
     /* ─── TAGS ─── */
@@ -187,61 +193,59 @@
     .tag.primary { background: rgba(0, 255, 65, 0.1); color: var(--accent); border-color: var(--accent2); box-shadow: inset 0 0 5px rgba(0, 255, 65, 0.2);}
 
     /* ─── CULINARY SPOTLIGHT ─── */
-    .culinary-image-container { width: 100%; height: 200px; overflow: hidden; border-radius: 4px; border: 1px solid var(--accent2); margin-bottom: 1rem; }
+    .culinary-image-container { width: 100%; height: 100%; min-height: 250px; overflow: hidden; border-radius: 4px; border: 1px solid var(--accent2); }
     .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .module:hover .culinary-image-container img { transform: scale(1.05); }
 
     /* ─── WRITEUPS SPECIFIC ─── */
-    .writeup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;}
-    .writeup-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .writeup-platform { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
-    .badge-placeholder { width: 50px; height: 50px; background: rgba(0, 255, 65, 0.05); border: 1px dashed var(--accent2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.2rem;}
-    .badge-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px;} /* Active when an image is added */
-    .writeup-desc { font-size: .9rem; color: var(--text); margin-bottom: 1.5rem; flex: 1;}
-    .btn-writeup { align-self: flex-start; background: transparent; border: 1px solid var(--accent2); color: var(--accent); padding: .4rem 1rem; font-size: .8rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; text-decoration: none;}
-    .btn-writeup:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);}
+    .writeup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 1rem;}
+    .writeup-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.3rem; }
+    .writeup-platform { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
+    .badge-placeholder { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border: 1px dashed var(--accent2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.5rem;}
+    .badge-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px;} 
+    .writeup-desc { font-size: .95rem; color: var(--text); margin-bottom: 2rem; flex: 1;}
+    .btn-writeup { align-self: flex-start; background: transparent; border: 1px solid var(--accent2); color: var(--accent); padding: .5rem 1.2rem; font-size: .8rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; text-decoration: none;}
+    .btn-writeup:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); color: var(--heading);}
 
     /* ─── EXPERIENCE LIST ─── */
-    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
-    .exp-item { padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border); }
+    .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+    .exp-item { padding-bottom: 2rem; border-bottom: 1px dashed var(--border); }
     .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;}
-    .exp-role { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); }
-    .exp-company { font-size: .9rem; color: var(--accent); font-weight: 600; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
-    .exp-date { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 0.2rem 0.6rem; border: 1px solid var(--accent2); }
-    .exp-details { padding-left: 1.2rem; margin-top: 0.8rem; color: var(--text); font-size: .9rem; list-style-type: square; }
-    .exp-details li { margin-bottom: 0.4rem; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;}
+    .exp-role { font-family: 'Ubuntu', sans-serif; font-size: 1.3rem; color: var(--heading); }
+    .exp-company { font-size: 1rem; color: var(--accent); font-weight: 600; text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);}
+    .exp-date { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 0.3rem 0.8rem; border: 1px solid var(--accent2); border-radius: 2px;}
+    .exp-details { padding-left: 1.2rem; margin-top: 1rem; color: var(--text); font-size: .95rem; list-style-type: square; }
+    .exp-details li { margin-bottom: 0.5rem; }
     .exp-details li::marker { color: var(--accent2); }
 
     /* ─── CERTIFICATIONS ─── */
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-    .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.2rem; }
-    .cert-icon { width: 48px; height: 48px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
-    .cert-info h4 { font-size: 1rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .cert-info p { font-size: .85rem; color: var(--muted); margin-bottom: 0; }
-    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--accent); margin-bottom: 0.3rem; display: inline-block;}
-    .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.1rem 0.4rem; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.5rem; margin-bottom: 1rem;}
+    .cert-module:last-child { margin-bottom: 0; }
+    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
+    .cert-info h4 { font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .cert-info p { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
+    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; display: inline-block;}
+    .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.2rem 0.5rem; border: 1px solid rgba(245, 158, 11, 0.3); }
 
     /* ─── CONTACT ─── */
     .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;}
-    .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: rgba(10, 20, 10, 0.8); border: 1px solid var(--accent2); padding: 1.2rem 2rem; border-radius: 4px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 250px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; backdrop-filter: blur(4px);}
-    .contact-btn svg { width: 24px; height: 24px; color: var(--accent); transition: transform .2s; filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5));}
-    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 255, 65, 0.15);}
+    .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: rgba(10, 20, 10, 0.8); border: 1px solid var(--accent2); padding: 1.5rem 2.5rem; border-radius: 4px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 280px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; backdrop-filter: blur(4px);}
+    .contact-btn svg { width: 26px; height: 26px; color: var(--accent); transition: transform .2s; filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5));}
+    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 255, 65, 0.15);}
     .contact-btn:hover svg { transform: scale(1.1); }
 
-    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
+    footer { text-align: center; padding: 3rem; color: var(--muted); font-size: .85rem; border-top: 1px dashed var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
 
     @media (max-width: 992px) {
       .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; }
     }
 
     @media (max-width: 768px) {
-      .hero { flex-direction: column; gap: 3rem; padding-top: 120px; text-align: center; }
-      .hero-left { max-width: 100%; align-items: center; display: flex; flex-direction: column;}
-      .hero-stats { justify-content: center; }
-      .hero-cta { justify-content: center; }
-      nav ul { display: none; }
+      .hero-centered { padding-top: 150px; }
+      .stat-box { min-width: 140px; padding: 1rem; }
       .module-header { flex-direction: column; text-align: center; }
+      .culinary-image-container { min-height: 200px; margin-top: 1.5rem; }
     }
   </style>
 </head>
@@ -250,68 +254,50 @@
 <canvas id="bg-canvas"></canvas>
 
 <nav>
-  <a class="nav-brand" href="#">
-    andrew<span>_</span>portfolio
-  </a>
   <ul>
     <li><a href="#skills">Skills Matrix</a></li>
     <li><a href="#tactical">Tactical Ops</a></li>
     <li><a href="#writeups">Action Reports</a></li>
     <li><a href="#personnel">Personnel File</a></li>
-    <li><a href="#contact">Comm Link</a></li>
   </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">
-      <span class="badge-icon">⚡</span> Target Role: SOC Analyst
+<header class="hero-centered">
+  <div class="profile-container" title="System Online">
+    <img src="./profile-photo.jpg" alt="Andrew Ang" class="profile-img">
+  </div>
+  
+  <div class="hero-badge">
+    <span class="badge-icon">⚡</span> Target Role: SOC Analyst
+  </div>
+
+  <h1>Andrew <em>Ang Guan Sheng</em></h1>
+
+  <p class="hero-sub">
+    A committed professional (ESFJ-A) with a dual passion for cybersecurity and culinary R&D. Thrives in fast-paced environments with a proven track record of discipline and operational excellence—from managing on-scene incident responses to executing enterprise web server hardening.
+  </p>
+
+  <div class="hero-stats-row">
+    <div class="stat-box">
+      <div class="stat-num" data-count="4">0</div>
+      <div class="stat-label">Core Projects</div>
     </div>
-
-    <h1>Andrew <br /><em>Ang Guan Sheng</em></h1>
-
-    <p class="hero-sub">
-      A committed professional (ESFJ-A) with a dual passion for cybersecurity and culinary R&D. Thrives in fast-paced environments with a proven track record of discipline and operational excellence—from managing on-scene incident responses to executing enterprise web server hardening.
-    </p>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num" data-count="4">0</div>
-        <div class="stat-label">Core Projects</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-count="5">0</div>
-        <div class="stat-label">Certifications & Badges</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-count="8">0<span>+</span></div>
-        <div class="stat-label">Years Ops Exp</div>
-      </div>
+    <div class="stat-box">
+      <div class="stat-num" data-count="5">0</div>
+      <div class="stat-label">Certs & Badges</div>
     </div>
-
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#skills">Initialize Matrix</a>
-      <a class="btn btn-outline" href="#contact">Establish Comm Link</a>
+    <div class="stat-box">
+      <div class="stat-num" data-count="8">0<span>+</span></div>
+      <div class="stat-label">Years Ops Exp</div>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="profile-container" title="System Online">
-      <img src="./profile-photo.jpg" alt="Andrew Ang" class="profile-img">
-    </div>
-    
-    <div class="terminal-window">
-      <div class="terminal-bar">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <span class="terminal-title">AttackBox — andrew</span>
-      </div>
-      <div class="terminal-body" id="terminal-body">
-      </div>
-    </div>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#skills">Initialize Matrix</a>
+    <a class="btn btn-outline" href="#contact">Establish Comm Link</a>
   </div>
-</div>
+</header>
+
 
 <section id="skills">
   <div class="reveal">
@@ -385,7 +371,21 @@
   </div>
 
   <div class="bento-grid">
-    <div class="module col-span-6 reveal reveal-delay-1">
+
+    <div class="module col-span-4 reveal reveal-delay-1" style="padding: 0; background: transparent; border: none; box-shadow: none;">
+      <div class="terminal-window" style="height: 100%;">
+        <div class="terminal-bar">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <span class="terminal-title">System_Status</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+        </div>
+      </div>
+    </div>
+
+    <div class="module col-span-8 reveal reveal-delay-2">
       <div class="module-header">
         <div class="module-icon">🛡️</div>
         <div class="module-title">
@@ -403,7 +403,7 @@
       </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-2">
+    <div class="module col-span-6 reveal reveal-delay-1">
       <div class="module-header">
         <div class="module-icon">🌐</div>
         <div class="module-title">
@@ -421,7 +421,7 @@
       </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-3">
+    <div class="module col-span-6 reveal reveal-delay-2">
       <div class="module-header">
         <div class="module-icon">🤖</div>
         <div class="module-title">
@@ -439,23 +439,27 @@
       </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-1" style="display: flex; flex-direction: column;">
-      <div class="module-header">
-        <div class="module-icon">🍍</div>
-        <div class="module-title">
-          <h3>Product R&D Commercialization</h3>
-          <div class="module-subtitle">Entrepreneurial Initiative</div>
+    <div class="module col-span-12 reveal reveal-delay-3" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 3rem;">
+      <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="module-header">
+          <div class="module-icon">🍍</div>
+          <div class="module-title">
+            <h3>Product R&D Commercialization</h3>
+            <div class="module-subtitle">Entrepreneurial Initiative</div>
+          </div>
+        </div>
+        <div class="module-content">
+          <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
+        </div>
+        <div class="tag-container">
+          <span class="tag primary">Process Iteration</span>
+          <span class="tag">Product Lifecycle</span>
         </div>
       </div>
-      <div class="module-content">
-        <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
-      </div>
-      <div class="culinary-image-container" style="height: 120px; margin-bottom: 1rem;">
-        <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">Process Iteration</span>
-        <span class="tag">Product Lifecycle</span>
+      <div style="flex: 1; min-width: 300px;">
+        <div class="culinary-image-container">
+          <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
+        </div>
       </div>
     </div>
 
@@ -467,7 +471,7 @@
     <div class="section-header">
       <div class="section-label">Module 03</div>
       <h2>Action Reports & Writeups</h2>
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem;">// Detailed HTML execution logs and methodology walkthroughs. Progressing from foundational infrastructure to advanced offensive operations and real-world defensive deployment.</p>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; max-width: 700px; margin-left: auto; margin-right: auto;">// Detailed HTML execution logs and methodology walkthroughs. Progressing from foundational infrastructure to advanced offensive operations and real-world defensive deployment.</p>
     </div>
   </div>
 
@@ -672,7 +676,7 @@
 </section>
 
 <footer>
-  >_ Follow the white rabbit. Hosted on GitHub Pages.
+  >_ Follow the white rabbit. Built for the Blue Team.
 </footer>
 
 <script>
@@ -694,11 +698,10 @@
   }
 
   function draw() {
-    // Translucent black background to create trail effect
     ctx.fillStyle = 'rgba(5, 10, 5, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#00ff41'; // Matrix green text
+    ctx.fillStyle = '#00ff41';
     ctx.font = fontSize + 'px JetBrains Mono';
 
     for (let i = 0; i < drops.length; i++) {
@@ -724,18 +727,19 @@
 /* ── Terminal Typewriter ── */
 (function() {
   const lines = [
-    { text: 'root@matrix:~# whoami', cls: 't-prompt' },
-    { text: 'andrew', cls: 't-output' },
-    { text: 'root@matrix:~# ./init_soc.sh', cls: 't-prompt' },
-    { text: '[+] Bypassing mainframe...', cls: 't-comment' },
-    { text: '[+] Firewall rules loaded.', cls: 't-comment' },
-    { text: '[+] Ready to deploy.', cls: 't-comment' }
+    { text: 'root@soc_node_01:~# whoami', cls: 't-prompt' },
+    { text: 'andrew_ang', cls: 't-output' },
+    { text: 'root@soc_node_01:~# ./init_defenses.sh', cls: 't-prompt' },
+    { text: '[+] WAF Rules active.', cls: 't-comment' },
+    { text: '[+] Protocol encryption enforced.', cls: 't-comment' },
+    { text: '[+] Ready for incident response.', cls: 't-comment' }
   ];
 
   const body = document.getElementById('terminal-body');
   let li = 0, ci = 0;
 
   function typeLine() {
+    if (!body) return;
     if (li >= lines.length) return;
     const line = lines[li];
 
@@ -823,26 +827,11 @@
 
   // Disable common developer tools keyboard shortcuts
   document.addEventListener('keydown', (e) => {
-    // F12
-    if (e.key === 'F12') {
-      e.preventDefault();
-    }
-    // Ctrl+Shift+I (Windows) or Cmd+Opt+I (Mac)
-    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.metaKey && e.altKey && e.key === 'i')) {
-      e.preventDefault();
-    }
-    // Ctrl+Shift+J (Windows) or Cmd+Opt+J (Mac)
-    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.metaKey && e.altKey && e.key === 'j')) {
-      e.preventDefault();
-    }
-    // Ctrl+U (Windows) or Cmd+Opt+U (Mac) - View Source
-    if ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u')) {
-      e.preventDefault();
-    }
-    // Ctrl+Shift+C (Windows) - Inspect Element
-    if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-      e.preventDefault();
-    }
+    if (e.key === 'F12') { e.preventDefault(); }
+    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.metaKey && e.altKey && e.key === 'i')) { e.preventDefault(); }
+    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.metaKey && e.altKey && e.key === 'j')) { e.preventDefault(); }
+    if ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u')) { e.preventDefault(); }
+    if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); }
   });
 })();
 </script>
