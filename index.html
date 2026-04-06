@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <meta name="robots" content="noindex, nofollow">
+  
   <title>Andrew Ang Guan Sheng — Cybersecurity Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -188,6 +191,16 @@
     .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .module:hover .culinary-image-container img { transform: scale(1.05); }
 
+    /* ─── WRITEUPS SPECIFIC ─── */
+    .writeup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;}
+    .writeup-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .writeup-platform { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
+    .badge-placeholder { width: 50px; height: 50px; background: rgba(0, 255, 65, 0.05); border: 1px dashed var(--accent2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.2rem;}
+    .badge-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px;} /* Active when an image is added */
+    .writeup-desc { font-size: .9rem; color: var(--text); margin-bottom: 1.5rem; flex: 1;}
+    .btn-writeup { align-self: flex-start; background: transparent; border: 1px solid var(--accent2); color: var(--accent); padding: .4rem 1rem; font-size: .8rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; text-decoration: none;}
+    .btn-writeup:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);}
+
     /* ─── EXPERIENCE LIST ─── */
     .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .exp-item { padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border); }
@@ -243,6 +256,7 @@
   <ul>
     <li><a href="#skills">Skills Matrix</a></li>
     <li><a href="#tactical">Tactical Ops</a></li>
+    <li><a href="#writeups">Action Reports</a></li>
     <li><a href="#personnel">Personnel File</a></li>
     <li><a href="#contact">Comm Link</a></li>
   </ul>
@@ -407,42 +421,90 @@
       </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-3">
-      <div class="module-header">
-        <div class="module-icon">🤖</div>
-        <div class="module-title">
-          <h3>Mr. Robot CTF</h3>
-          <div class="module-subtitle">TryHackMe Engagement</div>
+    <div class="module col-span-12 reveal reveal-delay-1" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column;">
+        <div class="module-header">
+          <div class="module-icon">🍍</div>
+          <div class="module-title">
+            <h3>Product R&D Commercialization</h3>
+            <div class="module-subtitle">Entrepreneurial Initiative</div>
+          </div>
+        </div>
+        <div class="module-content">
+          <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
+        </div>
+        <div class="tag-container">
+          <span class="tag primary">Process Iteration</span>
+          <span class="tag">Product Lifecycle</span>
         </div>
       </div>
-      <div class="module-content">
-        <p>Successfully executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Fully documented the engagement with step-by-step visual evidence logs. Gained practical, hands-on experience in vulnerability enumeration and real-world attacker methodologies.</p>
-      </div>
-      <div class="tag-container">
-        <span class="tag primary">Root Compromise</span>
-        <span class="tag">Enumeration</span>
-        <span class="tag">Documentation</span>
+      <div style="flex: 1; min-width: 300px;">
+        <div class="culinary-image-container" style="height: 100%; min-height: 200px;">
+          <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
+        </div>
       </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-1" style="display: flex; flex-direction: column;">
-      <div class="module-header">
-        <div class="module-icon">🍍</div>
-        <div class="module-title">
-          <h3>Product R&D Commercialization</h3>
-          <div class="module-subtitle">Entrepreneurial Initiative</div>
+  </div>
+</section>
+
+<section id="writeups">
+  <div class="reveal">
+    <div class="section-header">
+      <div class="section-label">Module 03</div>
+      <h2>Action Reports & Writeups</h2>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem;">// Detailed HTML execution logs and methodology walkthroughs.</p>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    
+    <div class="module col-span-4 reveal reveal-delay-1">
+      <div class="writeup-header">
+        <div class="writeup-title">
+          <h3>Mr. Robot Boot-to-Root</h3>
+          <div class="writeup-platform">TryHackMe Engagement</div>
+        </div>
+        <div class="badge-placeholder" title="Badge Placeholder">
+          🤖
         </div>
       </div>
-      <div class="module-content">
-        <p>Demonstrated entrepreneurial drive by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them. Showcases process iteration from concept to final market delivery.</p>
+      <div class="writeup-desc">
+        Complete step-by-step penetration testing report. Covers nmap enumeration, Wordpress credential brute-forcing, reverse shell injection, and privilege escalation to root.
       </div>
-      <div class="culinary-image-container" style="height: 120px; margin-bottom: 1rem;">
-        <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
+      <a href="#" class="btn-writeup">> Access Report</a>
+    </div>
+
+    <div class="module col-span-4 reveal reveal-delay-2">
+      <div class="writeup-header">
+        <div class="writeup-title">
+          <h3>Linux Fundamentals</h3>
+          <div class="writeup-platform">TryHackMe Engagement</div>
+        </div>
+        <div class="badge-placeholder" title="Badge Placeholder">
+          🐧
+        </div>
       </div>
-      <div class="tag-container">
-        <span class="tag primary">Process Iteration</span>
-        <span class="tag">Product Lifecycle</span>
+      <div class="writeup-desc">
+        Methodology log covering privilege management, system administration, and foundational Linux defensive operations essential for SOC analysts.
       </div>
+      <a href="#" class="btn-writeup">> Access Report</a>
+    </div>
+
+    <div class="module col-span-4 reveal reveal-delay-3">
+      <div class="writeup-header">
+        <div class="writeup-title">
+          <h3>Web Architecture</h3>
+          <div class="writeup-platform">TryHackMe Engagement</div>
+        </div>
+        <div class="badge-placeholder" title="Badge Placeholder">
+          🌐
+        </div>
+      </div>
+      <div class="writeup-desc">
+        Deep dive execution report on "Putting it all Together", focusing on enterprise CDNs, WAFs, load balancers, and Virtual Hosts.
+      </div>
+      <a href="#" class="btn-writeup">> Access Report</a>
     </div>
 
   </div>
@@ -451,7 +513,7 @@
 <section id="personnel">
   <div class="reveal">
     <div class="section-header">
-      <div class="section-label">Module 03</div>
+      <div class="section-label">Module 04</div>
       <h2>Personnel File</h2>
     </div>
   </div>
@@ -556,7 +618,7 @@
 <section id="contact">
   <div class="reveal">
     <div class="section-header" style="text-align: center;">
-      <div class="section-label">Module 04</div>
+      <div class="section-label">Module 05</div>
       <h2>Establish Comm Link</h2>
     </div>
   </div>
