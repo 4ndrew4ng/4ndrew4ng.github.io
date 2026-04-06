@@ -14,9 +14,9 @@
       --surface: #1e242b;
       --surface2:#283039;
       --border:  #2f3843;
-      --accent:  #ff4f4f; /* THM Red */
+      --accent:  #ff4f4f; /* Alert Red */
       --accent-hover: #ff3333;
-      --accent2: #95c93d; /* THM Green */
+      --accent2: #95c93d; /* Success Green */
       --text:    #9ba4b5;
       --heading: #ffffff;
       --muted:   #6b7687;
@@ -60,10 +60,10 @@
 
     /* ─── HERO ─── */
     .hero { 
-      position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 100px 2rem 4rem; max-width: 1100px; margin: 0 auto; gap: 4rem; 
+      position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 100px 2rem 4rem; max-width: 1200px; margin: 0 auto; gap: 4rem; 
     }
-    .hero-left { flex: 1; max-width: 620px; }
-    .hero-right { flex-shrink: 0; width: 320px; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+    .hero-left { flex: 1; max-width: 650px; }
+    .hero-right { flex-shrink: 0; width: 340px; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
 
     .hero-badge { 
       display: inline-flex; align-items: center; gap: .5rem; background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-size: .75rem; font-weight: 600; text-transform: uppercase; padding: .4rem 1rem; border-radius: 6px; margin-bottom: 1.5rem; animation: fadeDown .6s ease both; 
@@ -76,7 +76,7 @@
     h1 em { font-style: normal; color: var(--accent); }
     
     .hero-sub { 
-      font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; max-width: 540px; animation: fadeDown .8s .2s ease both; 
+      font-size: 1.1rem; color: var(--text); margin-bottom: 2rem; max-width: 580px; animation: fadeDown .8s .2s ease both; 
     }
 
     .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeDown .9s .3s ease both; flex-wrap: wrap; }
@@ -96,14 +96,17 @@
 
     /* ─── PROFILE AVATAR ─── */
     .profile-container {
-      width: 180px; height: 180px; border-radius: 50%; padding: 4px;
+      width: 200px; height: 200px; border-radius: 50%; padding: 4px;
       background: linear-gradient(135deg, var(--accent), var(--surface2));
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       animation: float 6s ease-in-out infinite;
+      overflow: hidden;
     }
     .profile-img { 
-      width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg); 
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg);
+      filter: grayscale(100%); transition: filter .5s ease;
     }
+    .profile-container:hover .profile-img { filter: grayscale(0%); }
 
     /* ─── TERMINAL / ATTACKBOX ─── */
     .terminal-window { 
@@ -129,73 +132,96 @@
     .reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; } .reveal-delay-3 { transition-delay: .3s; }
     
     /* ─── SECTIONS ─── */
-    section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; border-top: 1px solid var(--border); }
+    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; border-top: 1px solid var(--border); }
     .section-header { margin-bottom: 3rem; }
-    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
-    h2 { font-family: 'Ubuntu', sans-serif; font-size: 2rem; color: var(--heading); letter-spacing: -0.5px;}
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; letter-spacing: 0.05em; }
+    h2 { font-family: 'Ubuntu', sans-serif; font-size: 2.2rem; color: var(--heading); letter-spacing: -0.5px;}
 
-    /* ─── TIMELINE ─── */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 2px; background: var(--surface2); }
-    .tl-item { position: relative; padding-left: 1.5rem; margin-bottom: 3rem; }
-    .tl-dot { position: absolute; left: -2.3rem; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
-    .tl-item:first-child .tl-dot { background: var(--accent); box-shadow: 0 0 10px rgba(255, 79, 79, 0.4); }
-    
-    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .4rem; margin-bottom: .5rem; }
-    .tl-company { font-size: .85rem; color: var(--accent2); font-weight: 600; text-transform: uppercase; }
-    .tl-role { font-size: 1.2rem; font-weight: 600; color: var(--heading); font-family: 'Ubuntu', sans-serif; }
-    .tl-period { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--muted); background: var(--surface); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border); }
-    .tl-body ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .5rem; margin-top: 0.8rem; }
-    .tl-body li { font-size: .95rem; color: var(--text); }
-
-    /* ─── CARDS ─── */
-    .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-    .card { 
-      background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; 
+    /* ─── MODULAR GRID (Bento Style) ─── */
+    .bento-grid { 
+      display: grid; 
+      grid-template-columns: repeat(12, 1fr); 
+      gap: 1.5rem; 
+      grid-auto-flow: dense;
     }
-    .card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
     
-    .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-    .card h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); margin-bottom: .5rem; }
-    .card-result { display: inline-flex; font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent2); font-weight: 600; margin-bottom: 1rem; }
-    .card p { font-size: .9rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
+    .module { 
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; 
+    }
+    .module:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
     
-    .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .tag { font-size: .7rem; font-weight: 600; padding: .2rem .6rem; border-radius: 4px; background: var(--surface2); color: var(--heading); border: 1px solid var(--border); }
-    .tag.highlight { background: rgba(149, 201, 61, 0.1); color: var(--accent2); border-color: rgba(149, 201, 61, 0.3); }
+    .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .module-icon { font-size: 2rem; background: var(--surface2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border);}
+    .module-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .module-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent2); font-weight: 600; text-transform: uppercase;}
+    
+    .module-content p { font-size: .95rem; color: var(--text); flex: 1; margin-bottom: 1.5rem; }
+
+    /* Specific Module Sizings */
+    .col-span-12 { grid-column: span 12; }
+    .col-span-8  { grid-column: span 8; }
+    .col-span-6  { grid-column: span 6; }
+    .col-span-4  { grid-column: span 4; }
+    
+    /* ─── SKILLS MATRIX ─── */
+    .skill-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: .85rem; color: var(--heading); margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem; }
+    
+    .skill-item { margin-bottom: 1.2rem; }
+    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: .9rem; font-weight: 500; color: var(--text); }
+    .skill-bar-bg { width: 100%; height: 6px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #ff8888); border-radius: 4px; width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+    /* ─── TAGS ─── */
+    .tag-container { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+    .tag { font-size: .75rem; font-weight: 600; padding: .3rem .8rem; border-radius: 4px; background: var(--surface2); color: var(--heading); border: 1px solid var(--border); }
+    .tag.primary { background: rgba(255, 79, 79, 0.1); color: var(--accent); border-color: rgba(255, 79, 79, 0.3); }
 
     /* ─── CULINARY SPOTLIGHT ─── */
-    .culinary-spotlight { margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-    .culinary-spotlight h4 { font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 600; color: var(--heading); margin-bottom: .8rem; }
-    .culinary-spotlight .spot-img { width: 100%; border-radius: 6px; border: 1px solid var(--border); display: block; margin-bottom: .8rem;}
+    .culinary-image-container { width: 100%; height: 200px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; }
+    .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter .5s ease, transform .5s ease; }
+    .module:hover .culinary-image-container img { filter: grayscale(0%); transform: scale(1.05); }
 
-    /* ─── SKILLS ─── */
-    .skill-group h4 { font-family: 'Ubuntu', sans-serif; font-size: 1rem; color: var(--heading); margin-bottom: 1rem; }
-    .skill-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; font-size: .9rem; color: var(--text); }
-    .skill-bar-wrap { width: 40%; height: 6px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
-    .skill-bar { height: 100%; background: var(--accent); border-radius: 4px; width: 0; transition: width 1.2s ease; }
+    /* ─── EXPERIENCE LIST ─── */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-item { padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;}
+    .exp-role { font-family: 'Ubuntu', sans-serif; font-size: 1.1rem; color: var(--heading); }
+    .exp-company { font-size: .9rem; color: var(--accent); font-weight: 600; }
+    .exp-date { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); background: var(--surface2); padding: 0.2rem 0.6rem; border-radius: 4px; }
+    .exp-details { padding-left: 1.2rem; margin-top: 0.8rem; color: var(--text); font-size: .9rem; }
+    .exp-details li { margin-bottom: 0.4rem; }
 
     /* ─── CERTIFICATIONS ─── */
-    .cert-card { flex-direction: row; align-items: center; gap: 1.2rem; }
-    .cert-icon-box { width: 48px; height: 48px; background: var(--surface2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border); flex-shrink: 0;}
-    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--accent2); margin-bottom: .2rem; }
-    .cert-status.pending { color: var(--accent); }
-    .cert-card h4 { font-size: 1rem; margin-bottom: 0; }
-    .cert-card p { margin-bottom: 0; font-size: .8rem; margin-top: .2rem; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.2rem; }
+    .cert-icon { width: 48px; height: 48px; background: var(--surface2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border); flex-shrink: 0;}
+    .cert-info h4 { font-size: 1rem; color: var(--heading); margin-bottom: 0.2rem; }
+    .cert-info p { font-size: .85rem; color: var(--muted); margin-bottom: 0; }
+    .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.3rem; display: inline-block;}
+    .cert-status.pending { color: var(--accent); background: rgba(255, 79, 79, 0.1); padding: 0.1rem 0.4rem; border-radius: 3px; }
 
     /* ─── CONTACT ─── */
-    .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .contact-btn { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); padding: 1rem 1.5rem; border-radius: 8px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; flex: 1; min-width: 250px; }
-    .contact-btn svg { width: 24px; height: 24px; color: var(--muted); transition: color .2s; }
-    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); }
-    .contact-btn:hover svg { color: var(--accent); }
+    .contact-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;}
+    .contact-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); padding: 1.2rem 2rem; border-radius: 8px; color: var(--heading); text-decoration: none; font-weight: 500; transition: all .2s; min-width: 250px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;}
+    .contact-btn svg { width: 24px; height: 24px; color: var(--accent); transition: transform .2s; }
+    .contact-btn:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3);}
+    .contact-btn:hover svg { transform: scale(1.1); }
 
-    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; margin-top: 4rem;}
+
+    @media (max-width: 992px) {
+      .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; }
+    }
 
     @media (max-width: 768px) {
-      .hero { flex-direction: column; gap: 3rem; padding-top: 120px; }
+      .hero { flex-direction: column; gap: 3rem; padding-top: 120px; text-align: center; }
+      .hero-left { max-width: 100%; align-items: center; display: flex; flex-direction: column;}
+      .hero-stats { justify-content: center; }
+      .hero-cta { justify-content: center; }
       nav ul { display: none; }
-      .grid-container { grid-template-columns: 1fr; }
+      .module-header { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -208,10 +234,10 @@
     andrew<span>_</span>portfolio
   </a>
   <ul>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#skills">Skills Matrix</a></li>
+    <li><a href="#tactical">Tactical Ops</a></li>
+    <li><a href="#personnel">Personnel File</a></li>
+    <li><a href="#contact">Comm Link</a></li>
   </ul>
 </nav>
 
@@ -224,7 +250,7 @@
     <h1>Andrew <br /><em>Ang Guan Sheng</em></h1>
 
     <p class="hero-sub">
-      A committed individual (ESFJ-A) with a dual passion for cybersecurity and baking. Thrives in fast-paced environments with a proven track record of multitasking, discipline, and adding value to teams—from managing incident responses to executing enterprise web server hardening. 
+      A committed professional (ESFJ-A) with a dual passion for cybersecurity and culinary R&D. Thrives in fast-paced environments with a proven track record of discipline and operational excellence—from managing on-scene incident responses to executing enterprise web server hardening.
     </p>
 
     <div class="hero-stats">
@@ -243,13 +269,13 @@
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">View Projects</a>
-      <a class="btn btn-outline" href="#contact">Contact Me</a>
+      <a class="btn btn-primary" href="#skills">View Security Matrix</a>
+      <a class="btn btn-outline" href="#contact">Establish Comm Link</a>
     </div>
   </div>
 
   <div class="hero-right">
-    <div class="profile-container">
+    <div class="profile-container" title="System Online">
       <img src="./profile-photo.jpg" alt="Andrew Ang" class="profile-img">
     </div>
     
@@ -266,227 +292,244 @@
   </div>
 </div>
 
-<section id="experience">
-  <div class="reveal">
-    <div class="section-header">
-      <div class="section-label">Career Path</div>
-      <h2>Professional Experience</h2>
-    </div>
-  </div>
-
-  <div class="timeline">
-    <div class="tl-item reveal reveal-delay-1">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div>
-          <div class="tl-company">Cripton Environmental Engineering</div>
-          <div class="tl-role">Sites and Systems Coordinator</div>
-        </div>
-        <div class="tl-period">Oct 2025 – Present</div>
-      </div>
-      <div class="tl-body">
-        <ul>
-          <li>Led the Web Server Hardening Project (Jan - Feb 2026), identifying and patching critical security vulnerabilities on the live company web server.</li>
-          <li>Migrated file transfer protocols from insecure FTP to encrypted FTPS (TLS 1.2/1.3) to secure credential transmission.</li>
-          <li>Configured Web Application Firewall (WAF) rules to block User Enumeration scans, and implemented rate-limiting policies to neutralize brute-force attacks.</li>
-          <li>Manage tender submissions and documentation for key projects, including NTU and Jurong East Yuhua vertical solar panels.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tl-item reveal reveal-delay-2">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div>
-          <div class="tl-company">Bread Butter Jam, AlphaHire, Em by the Marina</div>
-          <div class="tl-role">Barista / Bartender / Service Crew</div>
-        </div>
-        <div class="tl-period">Mid 2022 – Present</div>
-      </div>
-      <div class="tl-body">
-        <ul>
-          <li>Provided full-time service operations until 2024, subsequently transitioning to a part-time role to support career development and education in IT/cybersecurity.</li>
-          <li>Maintained high standards of customer service and operational efficiency in high-pressure, fast-paced F&B environments.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tl-item reveal reveal-delay-3">
-          <div class="tl-dot"></div>
-          <div class="tl-header">
-            <div>
-              <div class="tl-company">Hundred Acre Creamery</div>
-              <div class="tl-role">Assistant Kitchen Supervisor</div>
-            </div>
-            <div class="tl-period">2021 – 2022</div>
-          </div>
-          <div class="tl-body">
-            <ul>
-              <li>Developed and produced exclusive gelato flavors, managed kitchen operations, and executed inventory control.</li>
-              <li>Conducted stock-taking and ensured timely reordering of materials to maintain a consistent operational supply chain.</li>
-            </ul>
-          </div>
-    </div>
-
-    <div class="tl-item reveal reveal-delay-1">
-      <div class="tl-dot"></div>
-      <div class="tl-header">
-        <div>
-          <div class="tl-company">Singapore Police Force (NS)</div>
-          <div class="tl-role">Neighbourhood Police Officer</div>
-        </div>
-        <div class="tl-period">2018 – 2020</div>
-      </div>
-      <div class="tl-body">
-        <ul>
-          <li>Patrolled neighborhoods to deter crime and managed dynamic, high-stress on-site incidents.</li>
-          <li>Conducted on-scene investigations, ensuring strict adherence to proper legal and operational protocols.</li>
-          <li>Awarded the SPF CMDR Operational Excellence Award (Q3 2019) for exceptional service and incident de-escalation.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="reveal">
-    <div class="section-header">
-      <div class="section-label">Portfolio</div>
-      <h2>Projects & Initiatives</h2>
-    </div>
-  </div>
-
-  <div class="grid-container">
-    <div class="card reveal reveal-delay-1">
-      <span class="card-icon">🤖</span>
-      <h3>Mr. Robot CTF (TryHackMe)</h3>
-      <div class="card-result">✓ Boot-to-root compromised</div>
-      <p>Successfully completed the TryHackMe "Mr. Robot" CTF, gaining practical, hands-on experience in vulnerability enumeration, attack vectors, and real-world attacker methodologies.</p>
-      <div class="tag-row">
-        <span class="tag">TryHackMe</span>
-        <span class="tag">CTF</span>
-        <span class="tag highlight">Root ✓</span>
-      </div>
-    </div>
-
-    <div class="card reveal reveal-delay-2">
-      <span class="card-icon">🛡️</span>
-      <h3>Web Server Hardening</h3>
-      <div class="card-result">✓ Secured Live Infrastructure</div>
-      <p>Identified and patched critical vulnerabilities on a live corporate web server. Transitioned legacy FTP to encrypted FTPS, and implemented strict WAF rules.</p>
-      <div class="tag-row">
-        <span class="tag">WAF</span>
-        <span class="tag">Encryption</span>
-        <span class="tag">Rate Limiting</span>
-      </div>
-    </div>
-
-    <div class="card reveal reveal-delay-3" style="grid-row: span 2;">
-      <span class="card-icon">🍍</span>
-      <h3>Culinary Commercialization</h3>
-      <div class="card-result">✓ R&D to Market</div>
-      <p>Demonstrated entrepreneurial initiative by developing an original recipe and commercializing it to professional networks.</p>
-      <div class="tag-row">
-        <span class="tag">Entrepreneurship</span>
-        <span class="tag">Product R&D</span>
-      </div>
-      <div class="culinary-spotlight">
-        <h4>Product: Earl Grey Pineapple Tarts</h4>
-        <img src="./tarts.jpeg" alt="Nostalgia Bakes Tarts" class="spot-img">
-        <p style="margin-bottom:0; font-size: 0.8rem;">Successfully transitioned from initial recipe development to a finalized, market-ready product.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="skills">
   <div class="reveal">
     <div class="section-header">
-      <div class="section-label">Technical</div>
-      <h2>Core Competencies</h2>
+      <div class="section-label">Module 01</div>
+      <h2>Security & Operations Matrix</h2>
     </div>
   </div>
 
-  <div class="grid-container" id="skills-grid">
-    <div class="card skill-group reveal reveal-delay-1">
-      <h4>Cybersecurity & IT</h4>
-      <div class="skill-item">Vulnerability Patching <div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
-      <div class="skill-item">Web Server Hardening <div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
-      <div class="skill-item">WAF Configuration <div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div></div>
-      <div class="skill-item">Protocol Encryption <div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div></div>
-    </div>
+  <div class="bento-grid">
+    <div class="module col-span-12 reveal reveal-delay-1">
+      <div class="skill-matrix">
+        <div class="skill-category">
+          <h4>// Cyber Defense & Infrastructure</h4>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>Vulnerability Patching</span> <span>85%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>Web Server Hardening</span> <span>80%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="80"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>WAF Configuration</span> <span>75%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="75"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>Protocol Encryption (FTPS)</span> <span>70%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70"></div></div>
+          </div>
+        </div>
 
-    <div class="card skill-group reveal reveal-delay-2">
-      <h4>Operations & Security</h4>
-      <div class="skill-item">Incident Management <div class="skill-bar-wrap"><div class="skill-bar" data-w="90"></div></div></div>
-      <div class="skill-item">Threat De-escalation <div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
-      <div class="skill-item">On-scene Investigations <div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div></div>
-      <div class="skill-item">Inventory Control <div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div></div>
+        <div class="skill-category">
+          <h4>// Operational Security & Incident Response</h4>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>Incident Management</span> <span>90%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="90"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>Threat De-escalation</span> <span>85%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>On-scene Investigations</span> <span>85%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info"><span>High-Stress Multitasking</span> <span>95%</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="95"></div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="certifications">
+<section id="tactical">
   <div class="reveal">
     <div class="section-header">
-      <div class="section-label">Credentials</div>
-      <h2>Education & Certifications</h2>
+      <div class="section-label">Module 02</div>
+      <h2>Tactical Operations</h2>
     </div>
   </div>
 
-  <div class="grid-container">
-    <div class="card cert-card reveal reveal-delay-1">
-      <div class="cert-icon-box">💻</div>
-      <div>
-        <div class="cert-status pending">EXPECTED APRIL 2026</div>
-        <h4>Certified Ethical Hacker (CEH) Candidate</h4>
-        <p>MAGES Institute of Excellence</p>
+  <div class="bento-grid">
+    <div class="module col-span-6 reveal reveal-delay-1">
+      <div class="module-header">
+        <div class="module-icon">🤖</div>
+        <div class="module-title">
+          <h3>Mr. Robot CTF</h3>
+          <div class="module-subtitle">TryHackMe Engagement</div>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Successfully executed a boot-to-root compromise on the TryHackMe "Mr. Robot" machine. Gained practical, hands-on experience in vulnerability enumeration, attack vectors, and understanding real-world attacker methodologies.</p>
+      </div>
+      <div class="tag-container">
+        <span class="tag primary">Root Compromise</span>
+        <span class="tag">Enumeration</span>
+        <span class="tag">Offensive Security</span>
       </div>
     </div>
 
-    <div class="card cert-card reveal reveal-delay-2">
-      <div class="cert-icon-box">🔒</div>
-      <div>
-        <div class="cert-status">COMPLETED 2024</div>
-        <h4>Infocomm Technology Certificate</h4>
-        <p>PSB Academy</p>
+    <div class="module col-span-6 reveal reveal-delay-2">
+      <div class="module-header">
+        <div class="module-icon">🛡️</div>
+        <div class="module-title">
+          <h3>Enterprise Infrastructure Defense</h3>
+          <div class="module-subtitle">Cripton.com.sg Web Server Hardening</div>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Led internal security remediation. Identified and patched critical vulnerabilities on a live corporate web server. Transitioned legacy FTP to encrypted FTPS, and implemented strict WAF rules to block user enumeration and automated brute-forcing.</p>
+      </div>
+      <div class="tag-container">
+        <span class="tag primary">WAF Config</span>
+        <span class="tag">Patch Management</span>
+        <span class="tag">Protocol Security</span>
       </div>
     </div>
 
-    <div class="card cert-card reveal reveal-delay-3">
-      <div class="cert-icon-box">🛡️</div>
-      <div>
-        <div class="cert-status">COMPLETED 2023</div>
-        <h4>Certified CSCU v3</h4>
-        <p>EC-Council</p>
+    <div class="module col-span-12 reveal reveal-delay-3" style="flex-direction: row; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column;">
+        <div class="module-header">
+          <div class="module-icon">🍍</div>
+          <div class="module-title">
+            <h3>Product R&D Commercialization</h3>
+            <div class="module-subtitle">Entrepreneurial Initiative</div>
+          </div>
+        </div>
+        <div class="module-content">
+          <p>Demonstrated strong entrepreneurial drive and process iteration by developing original recipes (Earl Grey Pineapple Tarts, Strawberry Cheesecake Gelato) and successfully commercializing them to professional and personal networks. Showcases ability to take a project from initial concept through testing to final market delivery.</p>
+        </div>
+        <div class="tag-container" style="margin-bottom: 1rem;">
+          <span class="tag primary">Process Iteration</span>
+          <span class="tag">Product Lifecycle</span>
+          <span class="tag">Stakeholder Management</span>
+        </div>
+      </div>
+      
+      <div style="flex: 1; min-width: 300px;">
+        <div class="culinary-image-container">
+          <img src="./tarts.jpeg" alt="Earl Grey Pineapple Tarts R&D">
+        </div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); text-align: center;">// VISUAL ASSET: Final Market-Ready Product</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="personnel">
+  <div class="reveal">
+    <div class="section-header">
+      <div class="section-label">Module 03</div>
+      <h2>Personnel File</h2>
+    </div>
+  </div>
+
+  <div class="bento-grid">
     
-    <div class="card cert-card reveal reveal-delay-1">
-      <div class="cert-icon-box">🚩</div>
-      <div>
-        <div class="cert-status">PARTICIPANT</div>
-        <h4>TISC 2024 Badge</h4>
-        <p>The InfoSec Challenge</p>
+    <div class="module col-span-8 reveal reveal-delay-1">
+      <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 2rem; color: var(--heading); border-bottom: 1px solid var(--border); padding-bottom: 1rem;">Operational History</h3>
+      
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Sites and Systems Coordinator</div>
+            <div class="exp-date">Oct 2025 – Present</div>
+          </div>
+          <div class="exp-company">Cripton Environmental Engineering (Singapore) Pte Ltd</div>
+          <ul class="exp-details">
+            <li>Led the Web Server Hardening Project, mitigating critical security vulnerabilities on the live company web server.</li>
+            <li>Configured WAF rules and rate-limiting policies to neutralize automated brute-force attacks.</li>
+            <li>Manage tender submissions and documentation for key projects, including NTU vertical solar panels.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Barista / Kitchen Supervisor</div>
+            <div class="exp-date">2021 – Present</div>
+          </div>
+          <div class="exp-company">Various F&B (Bread Butter Jam, AlphaHire, Hundred Acre Creamery)</div>
+          <ul class="exp-details">
+            <li>Maintained operational efficiency and inventory control in high-pressure, fast-paced environments.</li>
+            <li>Transitioned to a part-time role to support career development and education in cybersecurity.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Neighbourhood Police Officer (NS)</div>
+            <div class="exp-date">2018 – 2020</div>
+          </div>
+          <div class="exp-company">Singapore Police Force</div>
+          <ul class="exp-details">
+            <li>Managed dynamic, high-stress on-site incidents and conducted scene investigations adhering to strict legal protocols.</li>
+            <li>Awarded the SPF CMDR Operational Excellence Award (Q3 2019) for exceptional service and threat de-escalation.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="card cert-card reveal reveal-delay-2">
-      <div class="cert-icon-box">🥐</div>
-      <div>
-        <div class="cert-status">COMPLETED 2021</div>
-        <h4>Diploma in Pastry and Baking</h4>
-        <p>WSQ</p>
+    <div class="col-span-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent);">Credentials</h3>
+      
+      <div class="module cert-module reveal reveal-delay-2">
+        <div class="cert-icon">💻</div>
+        <div class="cert-info">
+          <span class="cert-status pending">TESTING: APRIL 2026</span>
+          <h4>Certified Ethical Hacker (CEH)</h4>
+          <p>MAGES Institute of Excellence</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-3">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>Infocomm Technology Cert</h4>
+          <p>PSB Academy (2024)</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-1">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>Certified CSCU v3</h4>
+          <p>EC-Council (2023)</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-2">
+        <div class="cert-icon">🚩</div>
+        <div class="cert-info">
+          <span class="cert-status">PARTICIPANT</span>
+          <h4>TISC 2024 Badge</h4>
+          <p>The InfoSec Challenge</p>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
 <section id="contact">
   <div class="reveal">
-    <div class="section-header">
-      <div class="section-label">Get in Touch</div>
-      <h2>Contact Me</h2>
+    <div class="section-header" style="text-align: center;">
+      <div class="section-label">Module 04</div>
+      <h2>Establish Comm Link</h2>
     </div>
   </div>
 
@@ -642,14 +685,14 @@
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-bar').forEach(bar => {
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
           bar.style.width = bar.dataset.w + '%';
         });
         obs.unobserve(e.target);
       }
     });
   }, { threshold: 0.2 });
-  document.querySelectorAll('.skill-group').forEach(g => obs.observe(g));
+  document.querySelectorAll('.skill-matrix').forEach(g => obs.observe(g));
 })();
 
 /* ── Counter Animation ── */
