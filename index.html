@@ -200,7 +200,7 @@
     .exp-details li::marker { color: var(--accent2); }
 
     .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.5rem; margin-bottom: 1rem;}
-    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
+    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0;}
     .cert-info h4 { font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
     .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; display: inline-block;}
     .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.2rem 0.5rem; border: 1px solid rgba(245, 158, 11, 0.3); }
@@ -432,9 +432,51 @@
 
     <div class="col-span-4" style="display: flex; flex-direction: column; gap: 1.5rem;">
       <h3 class="reveal reveal-delay-2" style="font-family: 'Ubuntu', sans-serif; color: var(--heading); padding-left: 1rem; border-left: 3px solid var(--accent);">Credentials</h3>
-      <div class="module cert-module reveal reveal-delay-2"><div class="cert-icon">💻</div><div class="cert-info"><span class="cert-status pending">TESTING: APRIL 26</span><h4>CEH Candidate</h4><p>MAGES Institute</p></div></div>
-      <div class="module cert-module reveal reveal-delay-3"><div class="cert-icon">🚩</div><div class="cert-info"><span class="cert-status">VERIFIED</span><h4>TISC 2024 Badge</h4><p>InfoSec Challenge</p></div></div>
-      <div class="module cert-module reveal reveal-delay-1"><div class="cert-icon">🛡️</div><div class="cert-info"><span class="cert-status">VERIFIED</span><h4>Certified CSCU v3</h4><p>EC-Council</p></div></div>
+      
+      <div class="module cert-module reveal reveal-delay-2">
+        <div class="cert-icon">💻</div>
+        <div class="cert-info">
+          <span class="cert-status pending">TESTING: APRIL 26</span>
+          <h4>CEH Candidate</h4>
+          <p>MAGES Institute</p>
+        </div>
+      </div>
+      
+      <div class="module cert-module reveal reveal-delay-3">
+        <div class="cert-icon">🚩</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>TISC 2024 Badge</h4>
+          <p>InfoSec Challenge</p>
+        </div>
+      </div>
+      
+      <div class="module cert-module reveal reveal-delay-1">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>Certified CSCU v3</h4>
+          <p>EC-Council</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-2">
+        <div class="cert-icon">🔒</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>Infocomm Technology Cert</h4>
+          <p>PSB Academy (2024)</p>
+        </div>
+      </div>
+
+      <div class="module cert-module reveal reveal-delay-3">
+        <div class="cert-icon">🥐</div>
+        <div class="cert-info">
+          <span class="cert-status">VERIFIED</span>
+          <h4>Diploma in Pastry & Baking</h4>
+          <p>WSQ (2021)</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
