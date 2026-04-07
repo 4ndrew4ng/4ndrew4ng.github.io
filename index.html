@@ -200,7 +200,7 @@
     .exp-details li::marker { color: var(--accent2); }
 
     .cert-module { flex-direction: row; align-items: center; padding: 1.5rem; gap: 1.5rem; margin-bottom: 1rem;}
-    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0;}
+    .cert-icon { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid var(--accent2); flex-shrink: 0; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);}
     .cert-info h4 { font-size: 1.1rem; color: var(--heading); margin-bottom: 0.2rem; }
     .cert-status { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; display: inline-block;}
     .cert-status.pending { color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 0.2rem 0.5rem; border: 1px solid rgba(245, 158, 11, 0.3); }
@@ -451,6 +451,14 @@
 <footer>>_ Follow the white rabbit. Built for the Blue Team.</footer>
 
 <script>
+/* Force page to load at the top */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
 /* Matrix Digital Rain */
 (function() {
   const canvas = document.getElementById('bg-canvas');
@@ -474,19 +482,32 @@
   draw();
 })();
 
-/* Terminal Typewriter */
+/* Looping Terminal Typewriter */
 (function() {
   const lines = [
-    { text: 'root@matrix:~# whoami', cls: 't-prompt' },
-    { text: 'andrew', cls: 't-output' },
-    { text: 'root@matrix:~# ./init_soc.sh', cls: 't-prompt' },
-    { text: '[+] Firewall rules loaded.', cls: 't-comment' },
-    { text: '[+] System Status: ONLINE.', cls: 't-comment' }
+    { text: 'root@soc_node_01:~# whoami', cls: 't-prompt' },
+    { text: 'andrew_ang', cls: 't-output' },
+    { text: 'root@soc_node_01:~# ./init_defenses.sh', cls: 't-prompt' },
+    { text: '[+] WAF Rules active.', cls: 't-comment' },
+    { text: '[+] Protocol encryption enforced.', cls: 't-comment' },
+    { text: '[+] Ready for incident response.', cls: 't-comment' }
   ];
   const body = document.getElementById('terminal-body');
   let li = 0, ci = 0;
   function typeLine() {
-    if (li >= lines.length) return;
+    if (!body) return;
+    
+    // Loop the animation
+    if (li >= lines.length) {
+      setTimeout(() => {
+        body.innerHTML = '';
+        li = 0;
+        ci = 0;
+        typeLine();
+      }, 4000); // Wait 4 seconds before restarting
+      return;
+    }
+    
     const line = lines[li];
     if (ci === 0) {
       const span = document.createElement('div'); span.className = line.cls;
