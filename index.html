@@ -180,14 +180,36 @@
     .culinary-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .module:hover .culinary-image-container img { transform: scale(1.05); }
 
-    .writeup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border); padding-bottom: 1rem;}
-    .writeup-title h3 { font-family: 'Ubuntu', sans-serif; font-size: 1.2rem; color: var(--heading); margin-bottom: 0.3rem; }
-    .writeup-platform { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--accent); font-weight: 600; text-transform: uppercase;}
-    .badge-placeholder { width: 55px; height: 55px; background: rgba(0, 255, 65, 0.05); border: 1px dashed var(--accent2); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.5rem;}
-    .writeup-desc { font-size: .95rem; color: var(--text); margin-bottom: 2rem; flex: 1;}
-    .btn-writeup { align-self: flex-start; background: transparent; border: 1px solid var(--accent2); color: var(--accent); padding: .5rem 1.2rem; font-size: .8rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; text-decoration: none;}
-    .btn-writeup:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--accent); box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); color: var(--heading);}
+    /* ─── WRITEUPS SPECIFIC (NEW LOG FORMAT) ─── */
+    .writeup-featured { border-color: var(--accent); box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05); }
+    .writeup-featured .module-title h3 { color: var(--accent); text-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }
+    
+    .log-container { display: flex; flex-direction: column; height: 100%; }
+    .log-title { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem; border-bottom: 1px dashed var(--accent2); padding-bottom: 0.5rem; text-transform: uppercase;}
+    
+    .log-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .scrollable-log { max-height: 280px; overflow-y: auto; padding-right: 10px; }
+    
+    /* Custom Scrollbar for Matrix Theme */
+    .scrollable-log::-webkit-scrollbar { width: 6px; }
+    .scrollable-log::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
+    .scrollable-log::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 4px; }
+    .scrollable-log::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+    .log-item { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(31, 61, 31, 0.5); padding-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; transition: background 0.2s;}
+    .log-item:hover { background: rgba(0, 255, 65, 0.05); }
+    .log-item:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    .log-item a { color: var(--heading); text-decoration: none; transition: color 0.2s; }
+    .log-item a:hover { color: var(--accent); }
+    .log-status { color: var(--accent2); font-weight: bold; flex-shrink: 0; margin-left: 10px;}
+    .log-status.root { color: var(--accent); text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);}
+    .log-status.pending { color: #f59e0b; opacity: 0.8; }
+    
+    .log-item.planned { color: var(--muted); border-bottom: none; padding-bottom: 0.2rem;}
+    .log-item.planned span { color: var(--muted); }
+
+    /* ─── EXPERIENCE LIST ─── */
     .exp-list { display: flex; flex-direction: column; gap: 2rem; }
     .exp-item { padding-bottom: 2rem; border-bottom: 1px dashed var(--border); }
     .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -246,7 +268,7 @@
 
   <div class="hero-stats-row">
     <div class="stat-box"><div class="stat-num" data-count="4">0</div><div class="stat-label">Core Projects</div></div>
-    <div class="stat-box"><div class="stat-num" data-count="5">0</div><div class="stat-label">Certs & Badges</div></div>
+    <div class="stat-box"><div class="stat-num" data-count="15">0</div><div class="stat-label">Rooms Owned</div></div>
     <div class="stat-box"><div class="stat-num" data-count="8">0<span>+</span></div><div class="stat-label">Years Ops Exp</div></div>
   </div>
 
@@ -362,34 +384,83 @@
     <div class="section-header">
       <div class="section-label">Module 03</div>
       <h2>Action Reports & Writeups</h2>
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem;">// Detailed HTML execution logs and methodology walkthroughs.</p>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem;">// Documented methodology, execution logs, and continuous learning roadmap.</p>
     </div>
   </div>
 
   <div class="bento-grid">
-    <div class="module col-span-6 reveal reveal-delay-1">
-      <div class="writeup-header"><div class="writeup-title"><h3>[01] Linux Fundamentals</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🐧</div></div>
-      <div class="writeup-desc">Methodology log covering core OS functions, privilege management, and system administration essential for SOC analysts.</div>
-      <a href="#" class="btn-writeup">> Access Report</a>
+    
+    <div class="module col-span-12 writeup-featured reveal reveal-delay-1">
+      <div class="module-header">
+        <div class="module-icon" style="color: var(--heading); border-color: var(--accent);">🏢</div>
+        <div class="module-title">
+          <h3>Cripton Infrastructure Hardening</h3>
+          <div class="module-subtitle" style="color: var(--text);">Live Corporate Environment Report</div>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Comprehensive execution report detailing the mitigation of critical vulnerabilities on Cripton.com.sg. Includes transition from legacy FTP to encrypted FTPS and custom WAF rule configurations to neutralize active brute-force attacks.</p>
+      </div>
+      <div>
+        <a href="./writeups/cripton-web-server-hardening-project_writeup.html" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem 1.5rem;">> Access Corporate Report</a>
+      </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-2">
-      <div class="writeup-header"><div class="writeup-title"><h3>[02] Web Architecture</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🌐</div></div>
-      <div class="writeup-desc">Deep dive execution report on enterprise CDNs, load balancers, and Virtual Hosts.</div>
-      <a href="#" class="btn-writeup">> Access Report</a>
+    <div class="module col-span-4 reveal reveal-delay-2">
+      <div class="log-container">
+        <h4 class="log-title">// Advanced Executions</h4>
+        <ul class="log-list">
+          <li class="log-item">
+            <a href="./writeups/mr-robot.html">Mr. Robot CTF</a>
+            <span class="log-status root">[ROOTED]</span>
+          </li>
+          <li class="log-item">
+            <a href="./writeups/kenobi.html">Kenobi</a>
+            <span class="log-status root">[ROOTED]</span>
+          </li>
+          <li class="log-item">
+            <a href="./writeups/basic-pentesting.html">Basic Pentesting</a>
+            <span class="log-status root">[ROOTED]</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-1">
-      <div class="writeup-header"><div class="writeup-title"><h3>[03] Mr. Robot Boot-to-Root</h3><div class="writeup-platform">TryHackMe</div></div><div class="badge-placeholder">🤖</div></div>
-      <div class="writeup-desc">Pentesting report covering nmap enumeration, Wordpress brute-forcing, and escalation to root.</div>
-      <a href="#" class="btn-writeup">> Access Report</a>
+    <div class="module col-span-4 reveal reveal-delay-3">
+      <div class="log-container">
+        <h4 class="log-title">// Foundational Training Logs</h4>
+        <ul class="log-list scrollable-log custom-scrollbar">
+          <li class="log-item"><a href="./writeups/packets-frames.html">Packets & Frames</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/extending-your-network.html">Extending Your Network</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/dns-in-detail.html">DNS in Detail</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/http-in-detail.html">HTTP in Detail</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/how-websites-work.html">How Websites Work</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/putting-it-all-together.html">Putting it all together</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/linux-fundamentals-part-1.html">Linux Fundamentals Pt. 1</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/linux-fundamentals-part-2.html">Linux Fundamentals Pt. 2</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/nmap-the-basics.html">Nmap the basics</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/metasploit-introduction.html">Metasploit: Introduction</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/metasploit-exploitation.html">Metasploit: Exploitation</a><span class="log-status">[✓]</span></li>
+          <li class="log-item"><a href="./writeups/metasploit-meterpreter.html">Metasploit: Meterpreter</a><span class="log-status">[✓]</span></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="module col-span-6 reveal reveal-delay-2" style="border-color: var(--accent);">
-      <div class="writeup-header"><div class="writeup-title"><h3 style="color: var(--accent);">[04] Cripton Infrastructure</h3><div class="writeup-platform">Corporate</div></div><div class="badge-placeholder" style="border-color: var(--accent); color: var(--accent);">🏢</div></div>
-      <div class="writeup-desc">Mitigation of critical vulnerabilities on Cripton.com.sg, including FTPS transition and custom WAF rule configurations.</div>
-      <a href="./writeups/cripton web server harderning project_writeup.html" class="btn-writeup">> Access Report</a>
+    <div class="module col-span-4 reveal reveal-delay-1">
+      <div class="log-container">
+        <h4 class="log-title" style="color: var(--muted); border-color: var(--border);">// Deployment Queue</h4>
+        <ul class="log-list scrollable-log custom-scrollbar">
+          <li class="log-item planned"><span>OWASP Top 10</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>SQL Injection & Vulnversity</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>Network Scanning & Enum.</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>Wireshark & Traffic Analysis</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>Active Directory Basics</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>Windows PrivEsc & Responder</span><span class="log-status pending">[PENDING]</span></li>
+          <li class="log-item planned"><span>WiFi Hacking 101 & IoT/OT</span><span class="log-status pending">[PENDING]</span></li>
+        </ul>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -539,14 +610,11 @@ window.addEventListener('load', () => {
   function typeLine() {
     if (!body) return;
     
-    // Loop the animation
     if (li >= lines.length) {
       setTimeout(() => {
         body.innerHTML = '';
-        li = 0;
-        ci = 0;
-        typeLine();
-      }, 4000); // Wait 4 seconds before restarting
+        li = 0; ci = 0; typeLine();
+      }, 4000); 
       return;
     }
     
