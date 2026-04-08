@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Fundamentals: Network Protocols & Encapsulation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #58a6ff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #58a6ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #d2a8ff;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #1f6feb;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Network Core Fundamentals: Packets, Frames, and Protocols</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>As part of my continuous preparation for the CEH certification, I completed an intensive review of foundational network mechanics. Rather than solely focusing on automated exploitation, this module reinforced my understanding of exactly how data traverses a network at the packet level, ensuring I can manually troubleshoot and bypass complex network infrastructure during active engagements.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. Network Encapsulation (OSI Layers 2 & 3)</h3>
+    <ul>
+        <li><b>Layer 2 (Data Link):</b> Demonstrated understanding of physical network addressing, utilizing <b>MAC Addresses</b> within network Frames to map localized device-to-device communication.</li>
+        <li><b>Layer 3 (Network):</b> Mapped logical routing mechanisms utilizing <b>IP Addresses</b> within Packets to understand global data traversal and subnetwork boundaries.</li>
+    </ul>
+
+    <h3>2. Protocol Analysis (TCP vs UDP)</h3>
+    <p>Solidified the mechanics of primary transport protocols, critical for optimizing Nmap scans and evading stateful firewalls:</p>
+    <ul>
+        <li><b>TCP Mechanics:</b> Mapped the precise execution of the stateful <b>3-Way Handshake (SYN, SYN/ACK, ACK)</b> and data integrity validation via checksum headers.</li>
+        <li><b>UDP Mechanics:</b> Analyzed the stateless nature of UDP communication and its application in rapid, unacknowledged data streaming.</li>
+    </ul>
+
+    <h3>3. Port & Service Identification</h3>
+    <ul>
+        <li>Analyzed the primary 0-1024 common port ranges.</li>
+        <li>Utilized manual network connection tools (<b>Netcat</b>) to establish raw socket connections to specified IP addresses and ports to manually extract service banners and flags.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "Effective exploitation is impossible without a deep understanding of standard network behavior. Mastering the mechanics of the TCP 3-Way Handshake and the distinction between Layer 2 and Layer 3 encapsulation is what allows a penetration tester to understand why a specific scan drops, how a firewall filters traffic, and exactly how to manually adapt their methodology to succeed."
+    </div>
+</div>
+
+</body>
+</html>

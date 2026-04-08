@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Security Architecture & Access Controls</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #38bdf8;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #38bdf8;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2ea043;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #0284c7;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Linux Security Architecture & File System Interrogation</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>As a prerequisite for advanced host-based privilege escalation, I completed a technical module focused on Linux security architecture. This engagement required establishing encrypted remote connections, manipulating core access control lists (ACLs), and enumerating critical system directories to identify potential attack vectors.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. Secure Remote Administration & Cryptography</h3>
+    <ul>
+        <li>Established encrypted remote terminal sessions utilizing the <b>Secure Shell (SSH)</b> protocol, bypassing cleartext transmission risks associated with legacy protocols.</li>
+        <li>Navigated the host OS natively, deploying specialized flags/arguments to modify standard command execution and extract hidden file structures.</li>
+    </ul>
+
+    <h3>2. Discretionary Access Control (DAC) Analysis</h3>
+    <ul>
+        <li>Interrogated file and directory permissions mapping to Owner, Group, and Global boundaries.</li>
+        <li>Identified read/write/execute (<b>rwx</b>) misconfigurations that could be leveraged for lateral movement or data exfiltration.</li>
+        <li>Executed user-context pivoting using the <b>su</b> utility to validate authentication boundaries and environment variable inheritance.</li>
+    </ul>
+
+    <h3>3. OS Directory Enumeration</h3>
+    <ul>
+        <li>Mapped the standard Linux hierarchy to identify high-value targets, specifically focusing on configuration stores (<b>/etc</b>) and volatile logging directories (<b>/var/log</b>).</li>
+        <li>Utilized world-writable temporary directories (<b>/tmp</b>) to simulate secure payload staging scenarios.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "Privilege escalation is entirely dependent on understanding what you are allowed to touch and what you are blocked from reading. By mastering Linux Discretionary Access Controls and understanding exactly where an OS hides its credentials and logs, an attacker can silently pivot through a system without triggering administrative alarms."
+    </div>
+</div>
+
+</body>
+</html>

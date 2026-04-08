@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Network Architecture & Application Security</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #a371f7;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #a371f7;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2ea043;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #8957e5;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Enterprise Web Architecture & Defensive Topologies</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>To effectively map and assess large-scale targets, I completed a technical module focused on enterprise-grade web infrastructure. This engagement required mapping the complete lifecycle of HTTP requests through complex perimeter defenses, load balancing clusters, and dynamically generated backend environments.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. Defensive Perimeter Analysis</h3>
+    <ul>
+        <li>Analyzed the placement and function of <b>Web Application Firewalls (WAF)</b> at Layer 7 to understand how defensive mechanisms filter malicious payloads (SQLi, XSS) before they reach the core application logic.</li>
+        <li>Mapped the flow of traffic through <b>Load Balancers</b> and evaluated the mechanics of automated health checks and redundancy failovers.</li>
+    </ul>
+
+    <h3>2. Infrastructure Scalability & Content Delivery</h3>
+    <ul>
+        <li>Evaluated the architectural necessity of <b>Content Delivery Networks (CDNs)</b> for caching static assets and obfuscating the origin server's true IP address.</li>
+        <li>Analyzed web server software configuration, specifically focusing on <b>Virtual Host</b> routing and document root directory allocation.</li>
+    </ul>
+
+    <h3>3. Dynamic Content Generation</h3>
+    <ul>
+        <li>Differentiated between static asset delivery and dynamic content generation via backend scripting languages (PHP, Python).</li>
+        <li>Demonstrated a clear understanding of the boundary between client-side rendering and server-side processing, a critical distinction for identifying remote code execution (RCE) vectors.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "Modern web applications are not single servers; they are heavily defended ecosystems. By understanding the precise flow of traffic—from the Recursive DNS resolution to the WAF inspection and the Load Balancer distribution—a penetration tester can identify structural weaknesses, bypass perimeter controls, and locate the true origin server."
+    </div>
+</div>
+
+</body>
+</html>

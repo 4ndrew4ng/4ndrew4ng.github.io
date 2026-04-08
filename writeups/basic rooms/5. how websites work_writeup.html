@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Security: Front-End Architecture & Injection Attacks</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #3fb950;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #3fb950;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #d2a8ff;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #238636;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Web Application Security: Front-End Architecture & Input Validation</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>I recently completed a technical lab focused on the structural integrity of front-end web applications. This engagement simulated an external web assessment, requiring me to audit raw client-side source code for exposed developer credentials, manipulate document object models via JavaScript, and exploit input sanitization failures to execute HTML injection attacks.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. Client-Side Source Code Auditing</h3>
+    <ul>
+        <li>Conducted manual inspection of raw HTML, CSS, and JavaScript source code to identify structural misconfigurations.</li>
+        <li>Successfully extracted plaintext administrative credentials left exposed in unsanitized developer comments, highlighting the critical risk of <b>Sensitive Data Exposure</b> in client-side artifacts.</li>
+    </ul>
+
+    <h3>2. Input Sanitization & HTML Injection</h3>
+    <ul>
+        <li>Identified an unvalidated text input parameter that failed to properly encode user-supplied data.</li>
+        <li>Crafted and deployed a targeted <b>HTML Injection</b> payload (utilizing raw Anchor and Image tags) to manipulate the visual rendering of the target application, proving the viability of client-side spoofing and redirect attacks.</li>
+    </ul>
+
+    <h3>3. JavaScript DOM Manipulation</h3>
+    <ul>
+        <li>Analyzed front-end interactivity scripts to map the application's client-side attack surface.</li>
+        <li>Manipulated HTML element ID attributes to force custom JavaScript execution, demonstrating the foundational mechanics required for advanced Cross-Site Scripting (XSS) exploitation.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "A web application is only as secure as its input fields. Failing to sanitize user data doesn't just break the visual layout of a page; it turns the application into a weapon against its own users. Understanding the precise interaction between HTML structure and JavaScript execution is the first step in mastering web application penetration testing."
+    </div>
+</div>
+
+</body>
+</html>

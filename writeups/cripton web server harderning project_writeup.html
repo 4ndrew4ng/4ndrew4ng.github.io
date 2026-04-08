@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Case Study: Web Server Hardening</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .vulnerability {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .solution {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Case Study: Web Server Reconnaissance & Hardening</h1>
+
+    <div class="summary-box">
+        <h2>Project Overview</h2>
+        <p><strong>Target:</strong> [Cripton.com.sg] ([redacted-domain.com]).</p>
+        <p><strong>Objective:</strong> I conducted a comprehensive network reconnaissance and vulnerability assessment on a live web server to identify and patch critical security flaws. Initial scans revealed the server was exposing critical infrastructure details, transmitting credentials insecurely, and leaking sensitive CMS version data.</p>
+    </div>
+
+    <h2>Phase 1: Intelligence Gathering & OSINT</h2>
+    <p>The engagement began with passive reconnaissance to map the organization's public footprint.</p>
+    <ul>
+        <li>A Whois lookup revealed the domain's registration details, including a direct technical contact email.</li>
+        <li><strong>The Problem:</strong> This exposed information provides a direct avenue for attackers to execute spear-phishing campaigns, such as masquerading as the domain registrar to send malicious links.</li>
+        <li><strong>The Solution:</strong> Mitigated this risk by recommending the purchase of "Whois Privacy Protection" from the registrar to redact personal names and emails from the public.</li>
+    </ul>
+
+    <h2>Phase 2: Network Scanning & Enumeration</h2>
+    <p>Using tools like <code>dnsrecon</code> and Nmap, I mapped the server's infrastructure and identified active services.</p>
+    <ul>
+        <li>DNS enumeration identified the root domain IP address and the mail subdomain.</li>
+        <li>Aggressive Nmap scans utilizing TCP SYN stealth (<code>-sS</code>), version detection (<code>-sV</code>), and default scripts (<code>-sC</code>) revealed multiple open ports: Port 21 (FTP), Port 80/443 (HTTP/HTTPS), and Port 3306 (MySQL).</li>
+    </ul>
+
+    <h3>Critical Vulnerabilities Discovered:</h3>
+    <div class="vulnerability">
+        <strong>1. Insecure File Transfer (Port 21):</strong> Attackers on the same network could capture packets using Wireshark to read passwords in clear text. Additionally, the open port was vulnerable to brute-force attacks using tools like Hydra.
+    </div>
+    <div class="vulnerability">
+        <strong>2. Database Exposure (Port 3306):</strong> The exposed MySQL port created a vector for Denial of Service (DoS) attacks using custom scripts or Hping3.
+    </div>
+    <div class="vulnerability">
+        <strong>3. Direct IP Targeting:</strong> By resolving the direct IP address, attackers could bypass cloud provider protections to launch direct attacks.
+    </div>
+
+    <h2>Phase 3: Web Application & CMS Vulnerabilities</h2>
+    <p>While the initial Nmap scan successfully identified the web server, the specific version was masked via Security by Obscurity.</p>
+    <ul>
+        <li>I performed manual banner grabbing using the <code>curl -I</code> command, exposing a CMS redirect header.</li>
+        <li>Inspection of the HTML source code revealed a <code>meta name="generator"</code> tag that explicitly disclosed the exact CMS version running on the site.</li>
+        <li><strong>Real-World Impact:</strong> Cross-referencing this data with public source-code search engines confirmed the domain was already indexed in targetable databases specifically due to this exposed generator tag. Attackers seeking vulnerabilities for that specific CMS version could locate the target instantly without active scanning.</li>
+    </ul>
+
+    <h2>Phase 4: Hardening & Remediation Implementation</h2>
+    <p>To neutralize these attack vectors and secure the server infrastructure, I implemented the following hardening measures:</p>
+
+    <div class="solution">
+        <strong>Protocol Migration:</strong> Migrated the insecure FTP service to encrypted FTPS/SFTP. This implementation utilizes strong encryption, ensuring passwords and data cannot be stolen via packet sniffing.
+    </div>
+    
+    <div class="solution">
+        <strong>Firewall Configuration:</strong> Configured strict WAF (Web Application Firewall) and server rules to block User Enumeration scans and prevent all external connections to the database port, mitigating DoS risks. Additionally, configured the server's firewall to only accept traffic originating from the cloud provider.
+    </div>
+
+    <div class="solution">
+        <strong>Transport & Access Security:</strong> Enabled HSTS (HTTP Strict Transport Security) to force browsers to never attempt unencrypted connections again. Implemented rate-limiting and login lockdown policies to neutralize Hydra-style brute force attacks.
+    </div>
+    
+    <div class="solution">
+        <strong>Attack Surface Reduction:</strong> Cleaned up the DNS configuration by deleting unused A records and subdomains to minimize the available attack surface.
+    </div>
+
+</body>
+</html>

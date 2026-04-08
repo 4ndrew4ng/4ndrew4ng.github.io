@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Security: HTTP Mechanics & API Manipulation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #ff7b72;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #ff7b72;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2ea043;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #da3633;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Web Application Security: API Interrogation & HTTP Mechanics</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>I recently completed a technical lab focused on the foundational mechanics of web application security. This engagement required bypassing standard browser interfaces to directly manipulate an application's backend logic, craft raw HTTP requests, and analyze state-management mechanisms to extract secured data.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. HTTP Verbs & API Manipulation</h3>
+    <ul>
+        <li>Manually crafted and executed <b>GET, POST, PUT, and DELETE</b> requests to interface directly with backend routing logic.</li>
+        <li>Injected explicit URL Query Strings and Body Parameters to forge authentication attempts, modify remote user records, and execute unauthorized resource deletion.</li>
+    </ul>
+
+    <h3>2. Status Code & Error Analysis</h3>
+    <ul>
+        <li>Analyzed HTTP server responses to map backend infrastructure health and permission structures.</li>
+        <li>Differentiated between Client-side authorization failures (<b>401/403</b>) and Server-side logic crashes (<b>500/503</b>) to identify potential vulnerability points within the application's attack surface.</li>
+    </ul>
+
+    <h3>3. Headers & State Management</h3>
+    <ul>
+        <li>Analyzed HTTP request/response headers, specifically focusing on <b>Content-Length</b> validation and <b>User-Agent</b> modification.</li>
+        <li>Demonstrated an understanding of stateless protocol constraints and the reliance on <b>Cookies</b> for session management, a critical prerequisite for identifying Session Hijacking and Cross-Site Request Forgery (CSRF) vulnerabilities.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "A browser is just a translator. To secure a web application—or to break it—you must speak its native language. By manually crafting HTTP requests and manipulating headers, a penetration tester stops interacting with the frontend GUI and starts engaging directly with the backend code where the true vulnerabilities lie."
+    </div>
+</div>
+
+</body>
+</html>

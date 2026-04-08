@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure Security: Firewalls, VPNs, and Network Segmentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 5px solid #d2a8ff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #d2a8ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #58a6ff;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2ea043;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        .highlight {
+            background-color: #1f2428;
+            padding: 15px;
+            border-left: 4px solid #f85149;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 0 5px 5px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #8957e5;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">TryHackMe Room Completed</span>
+    <h1>Advanced Network Infrastructure & Security Controls</h1>
+    
+    <h2>Executive Summary</h2>
+    <p>I recently completed a technical lab focused on enterprise network architecture and perimeter defense. This module simulated real-time network traffic manipulation, requiring me to deploy stateful firewall rules to mitigate an active attack, configure secure tunneling protocols, and map traffic routing across Layer 3 hardware.</p>
+
+    <h2>Core Competencies Validated</h2>
+    
+    <h3>1. Firewall Configuration & Attack Mitigation</h3>
+    <ul>
+        <li>Differentiated between <b>Stateless (Layer 3)</b> and <b>Stateful (Layer 4)</b> firewall operations, specifically focusing on connection state validation.</li>
+        <li>Successfully utilized a network simulator to identify an active Denial of Service condition, extracted the malicious Source IP, and deployed a targeted packet-dropping rule on Port 80 to stabilize the web server.</li>
+    </ul>
+
+    <h3>2. Secure Tunneling & Cryptography</h3>
+    <p>Solidified understanding of how Virtual Private Networks (VPNs) secure data in transit:</p>
+    <ul>
+        <li>Analyzed the <b>IPsec</b> framework for establishing fully encrypted, routable tunnels over public infrastructure.</li>
+        <li>Contrasted modern frameworks with legacy protocols (PPP) to understand the evolution of data authentication.</li>
+    </ul>
+
+    <h3>3. Enterprise LAN Segmentation</h3>
+    <ul>
+        <li>Mapped the flow of packets across multi-layer topologies using <b>Routers</b> and <b>Switches</b>.</li>
+        <li>Analyzed the implementation of <b>VLANs (Virtual Local Area Networks)</b> on Layer 3 switches to enforce strict logical network segmentation for internal security compliance.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <div class="highlight">
+        "You cannot exploit what you cannot reach, and you cannot secure what you do not understand. Configuring a firewall to actively drop malicious packets reinforces the critical importance of secure network architecture. Understanding IP routing, VLAN segmentation, and TCP states is the bedrock of both effective penetration testing and robust cyber defense."
+    </div>
+</div>
+
+</body>
+</html>
