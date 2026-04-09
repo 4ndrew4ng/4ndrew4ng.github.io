@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Case Study: Web Server Hardening</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -46,6 +47,43 @@
             border-radius: 3px;
             font-family: monospace;
         }
+        /* ─── DEFENSE: Disable Text Selection ─── */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* ─── DEFENSE: Watermark Overlay ─── */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            pointer-events: none; /* CRITICAL: Allows clicking through the watermark */
+            background-repeat: repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' fill='%2300ff41' fill-opacity='0.15' font-size='20' font-family='monospace' font-weight='bold' text-anchor='middle' transform='rotate(-45 150 150)'%3Eandrew4ng@hotmail.com%3C/text%3E%3C/svg%3E");
+        }
+        
+        /* ─── UI: Back Button ─── */
+        .back-btn {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            color: #58a6ff;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+        .back-btn:hover {
+            color: #2ea043;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +91,7 @@
     <h1>Case Study: Web Server Reconnaissance & Hardening</h1>
 
     <div class="summary-box">
+        <a href="../index.html" class="back-btn">< Return to Dashboard</a>
         <h2>Project Overview</h2>
         <p><strong>Target:</strong> [Cripton.com.sg] ([redacted-domain.com]).</p>
         <p><strong>Objective:</strong> I conducted a comprehensive network reconnaissance and vulnerability assessment on a live web server to identify and patch critical security flaws. Initial scans revealed the server was exposing critical infrastructure details, transmitting credentials insecurely, and leaking sensitive CMS version data.</p>
