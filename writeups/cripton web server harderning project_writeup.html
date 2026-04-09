@@ -88,7 +88,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="position: relative; margin-top: 60px;">
     <a href="../index.html" class="back-btn">< Return to Dashboard</a>
         
     <h1>Case Study: Web Server Reconnaissance & Hardening</h1>
@@ -151,6 +151,33 @@
     <div class="solution">
         <strong>Attack Surface Reduction:</strong> Cleaned up the DNS configuration by deleting unused A records and subdomains to minimize the available attack surface.
     </div>
+
+</div>
+
+<script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // Disable common developer tools keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // F12
+        if (e.key === 'F12') {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+I, J, or C (Inspect Element / Console)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+            e.preventDefault();
+        }
+        // Cmd+Option+I, J, or C (Mac Equivalents)
+        if (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'j' || e.key === 'c')) {
+            e.preventDefault();
+        }
+        // Ctrl+U or Cmd+Option+U (View Page Source)
+        if ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u')) {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>
