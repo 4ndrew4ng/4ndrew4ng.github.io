@@ -3,102 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Application Security: HTTP Mechanics & API Manipulation</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Training Log: HTTP in Detail</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #161b22;
-            padding: 40px;
-            border-radius: 8px;
-            border-top: 5px solid #ff7b72;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #ff7b72;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-            font-size: 2.2em;
-        }
-        h2 {
-            color: #58a6ff;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #2ea043;
-        }
-        p {
-            font-size: 1.1em;
-        }
-        .highlight {
-            background-color: #1f2428;
             padding: 15px;
-            border-left: 4px solid #f85149;
-            margin: 20px 0;
-            font-family: 'Courier New', Courier, monospace;
-            border-radius: 0 5px 5px 0;
         }
-        .badge {
+
+        /* ─── UI: Center Content Wrapper ─── */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 40px;
+            z-index: 10;
+        }
+
+        /* ─── UI: Back Button ─── */
+        .back-btn {
             display: inline-block;
-            background-color: #da3633;
-            color: #ffffff;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9em;
+            margin-bottom: 30px;
+            color: #58a6ff;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { 
+            color: #39ff14; 
+        }
+
+        /* ─── TYPOGRAPHY & HEADINGS ─── */
+        h1 {
+            color: #39ff14;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 1.6em;
             margin-bottom: 20px;
         }
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
+        
+        .briefing-box {
+            background-color: #161b22;
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.05em;
         }
-        li {
+
+        /* ─── CONCEPT GRID ─── */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .concept-card {
+            background-color: #21262d;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .concept-card h3 {
+            color: #d2a8ff;
+            margin-top: 0;
             margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+        .concept-card p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+        code {
+            background-color: #010409;
+            color: #39ff14;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* ─── DEFENSE: Disable Text Selection ─── */
+        body { 
+            user-select: none; 
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+        }
+        
+        /* ─── DEFENSE: Watermark Overlay ─── */
+        body::after {
+            content: ''; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: 9999; 
+            pointer-events: none; /* CRITICAL: Allows clicking through the watermark */
+            background-repeat: repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' fill='%2300ff41' fill-opacity='0.15' font-size='20' font-family='monospace' font-weight='bold' text-anchor='middle' transform='rotate(-45 150 150)'%3Eandrew4ng@hotmail.com%3C/text%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <span class="badge">TryHackMe Room Completed</span>
-    <h1>Web Application Security: API Interrogation & HTTP Mechanics</h1>
+<div class="content-wrapper">
     
-    <h2>Executive Summary</h2>
-    <p>I recently completed a technical lab focused on the foundational mechanics of web application security. This engagement required bypassing standard browser interfaces to directly manipulate an application's backend logic, craft raw HTTP requests, and analyze state-management mechanisms to extract secured data.</p>
+    <a href="../../index.html" class="back-btn">< Return to Dashboard</a>
 
-    <h2>Core Competencies Validated</h2>
+    <h1>Foundational Training: HTTP Mechanics & API Manipulation</h1>
     
-    <h3>1. HTTP Verbs & API Manipulation</h3>
-    <ul>
-        <li>Manually crafted and executed <b>GET, POST, PUT, and DELETE</b> requests to interface directly with backend routing logic.</li>
-        <li>Injected explicit URL Query Strings and Body Parameters to forge authentication attempts, modify remote user records, and execute unauthorized resource deletion.</li>
-    </ul>
-
-    <h3>2. Status Code & Error Analysis</h3>
-    <ul>
-        <li>Analyzed HTTP server responses to map backend infrastructure health and permission structures.</li>
-        <li>Differentiated between Client-side authorization failures (<b>401/403</b>) and Server-side logic crashes (<b>500/503</b>) to identify potential vulnerability points within the application's attack surface.</li>
-    </ul>
-
-    <h3>3. Headers & State Management</h3>
-    <ul>
-        <li>Analyzed HTTP request/response headers, specifically focusing on <b>Content-Length</b> validation and <b>User-Agent</b> modification.</li>
-        <li>Demonstrated an understanding of stateless protocol constraints and the reliance on <b>Cookies</b> for session management, a critical prerequisite for identifying Session Hijacking and Cross-Site Request Forgery (CSRF) vulnerabilities.</li>
-    </ul>
-
-    <h2>Key Takeaways</h2>
-    <div class="highlight">
-        "A browser is just a translator. To secure a web application—or to break it—you must speak its native language. By manually crafting HTTP requests and manipulating headers, a penetration tester stops interacting with the frontend GUI and starts engaging directly with the backend code where the true vulnerabilities lie."
+    <div class="briefing-box">
+        <strong>Module Objective:</strong> Validated foundational mechanics of web application security. A browser is merely a translator. To truly secure—or compromise—a web application, one must speak its native language. By bypassing standard graphical interfaces to directly manipulate backend logic, craft raw HTTP requests, and analyze state-management mechanisms, I demonstrated the ability to engage directly with the backend code where critical vulnerabilities reside.
     </div>
+
+    <div class="concept-grid">
+        
+        <div class="concept-card">
+            <h3>1. HTTP Verbs & API Manipulation</h3>
+            <p>Manually crafted and executed <strong>GET, POST, PUT, and DELETE</strong> requests to interface directly with backend routing logic. Injected explicit URL Query Strings and Body Parameters to forge authentication attempts, modify remote user records, and execute unauthorized resource deletion.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>2. Status Code & Error Analysis</h3>
+            <p>Analyzed HTTP server responses to map backend infrastructure health and permission structures. Differentiated between Client-side authorization failures (<strong>401/403</strong>) and Server-side logic crashes (<strong>500/503</strong>) to effectively identify potential vulnerability points within the application's attack surface.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>3. Headers & State Management</h3>
+            <p>Analyzed HTTP request/response headers, specifically focusing on <strong>Content-Length</strong> validation and <strong>User-Agent</strong> modification. Demonstrated an understanding of stateless protocol constraints and the reliance on <strong>Cookies</strong> for session management, a critical prerequisite for identifying Session Hijacking and Cross-Site Request Forgery (CSRF) vulnerabilities.</p>
+        </div>
+
+    </div>
+
 </div>
 
+<script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // Disable common developer tools keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || 
+           (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+           (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'j' || e.key === 'c')) || 
+           ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u'))) {
+            e.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
