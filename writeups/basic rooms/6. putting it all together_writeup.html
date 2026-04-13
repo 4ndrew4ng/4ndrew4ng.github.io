@@ -3,102 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Network Architecture & Application Security</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Training Log: Enterprise Web Architecture</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #161b22;
-            padding: 40px;
-            border-radius: 8px;
-            border-top: 5px solid #a371f7;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #a371f7;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-            font-size: 2.2em;
-        }
-        h2 {
-            color: #58a6ff;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #2ea043;
-        }
-        p {
-            font-size: 1.1em;
-        }
-        .highlight {
-            background-color: #1f2428;
             padding: 15px;
-            border-left: 4px solid #f85149;
-            margin: 20px 0;
-            font-family: 'Courier New', Courier, monospace;
-            border-radius: 0 5px 5px 0;
         }
-        .badge {
+
+        /* ─── UI: Center Content Wrapper ─── */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 40px;
+            z-index: 10;
+        }
+
+        /* ─── UI: Back Button ─── */
+        .back-btn {
             display: inline-block;
-            background-color: #8957e5;
-            color: #ffffff;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9em;
+            margin-bottom: 30px;
+            color: #58a6ff;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { 
+            color: #39ff14; 
+        }
+
+        /* ─── TYPOGRAPHY & HEADINGS ─── */
+        h1 {
+            color: #39ff14;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 1.6em;
             margin-bottom: 20px;
         }
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
+        
+        .briefing-box {
+            background-color: #161b22;
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.05em;
         }
-        li {
+
+        /* ─── CONCEPT GRID ─── */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .concept-card {
+            background-color: #21262d;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .concept-card h3 {
+            color: #d2a8ff;
+            margin-top: 0;
             margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+        .concept-card p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+        code {
+            background-color: #010409;
+            color: #39ff14;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* ─── DEFENSE: Disable Text Selection ─── */
+        body { 
+            user-select: none; 
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+        }
+        
+        /* ─── DEFENSE: Watermark Overlay ─── */
+        body::after {
+            content: ''; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: 9999; 
+            pointer-events: none; /* CRITICAL: Allows clicking through the watermark */
+            background-repeat: repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' fill='%2300ff41' fill-opacity='0.15' font-size='20' font-family='monospace' font-weight='bold' text-anchor='middle' transform='rotate(-45 150 150)'%3Eandrew4ng@hotmail.com%3C/text%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <span class="badge">TryHackMe Room Completed</span>
-    <h1>Enterprise Web Architecture & Defensive Topologies</h1>
+<div class="content-wrapper">
     
-    <h2>Executive Summary</h2>
-    <p>To effectively map and assess large-scale targets, I completed a technical module focused on enterprise-grade web infrastructure. This engagement required mapping the complete lifecycle of HTTP requests through complex perimeter defenses, load balancing clusters, and dynamically generated backend environments.</p>
+    <a href="../../index.html" class="back-btn">< Return to Dashboard</a>
 
-    <h2>Core Competencies Validated</h2>
+    <h1>Foundational Training: Enterprise Web Architecture</h1>
     
-    <h3>1. Defensive Perimeter Analysis</h3>
-    <ul>
-        <li>Analyzed the placement and function of <b>Web Application Firewalls (WAF)</b> at Layer 7 to understand how defensive mechanisms filter malicious payloads (SQLi, XSS) before they reach the core application logic.</li>
-        <li>Mapped the flow of traffic through <b>Load Balancers</b> and evaluated the mechanics of automated health checks and redundancy failovers.</li>
-    </ul>
-
-    <h3>2. Infrastructure Scalability & Content Delivery</h3>
-    <ul>
-        <li>Evaluated the architectural necessity of <b>Content Delivery Networks (CDNs)</b> for caching static assets and obfuscating the origin server's true IP address.</li>
-        <li>Analyzed web server software configuration, specifically focusing on <b>Virtual Host</b> routing and document root directory allocation.</li>
-    </ul>
-
-    <h3>3. Dynamic Content Generation</h3>
-    <ul>
-        <li>Differentiated between static asset delivery and dynamic content generation via backend scripting languages (PHP, Python).</li>
-        <li>Demonstrated a clear understanding of the boundary between client-side rendering and server-side processing, a critical distinction for identifying remote code execution (RCE) vectors.</li>
-    </ul>
-
-    <h2>Key Takeaways</h2>
-    <div class="highlight">
-        "Modern web applications are not single servers; they are heavily defended ecosystems. By understanding the precise flow of traffic—from the Recursive DNS resolution to the WAF inspection and the Load Balancer distribution—a penetration tester can identify structural weaknesses, bypass perimeter controls, and locate the true origin server."
+    <div class="briefing-box">
+        <strong>Module Objective:</strong> Validated core competencies in mapping and assessing enterprise-grade web infrastructure. Modern web applications are heavily defended ecosystems, not single servers. By understanding the precise flow of HTTP requests through complex perimeter defenses, Web Application Firewalls (WAF), load balancing clusters, and dynamically generated backend environments, I demonstrated the ability to identify structural weaknesses, bypass perimeter controls, and locate the true origin server.
     </div>
+
+    <div class="concept-grid">
+        
+        <div class="concept-card">
+            <h3>1. Defensive Perimeter Analysis</h3>
+            <p>Analyzed the placement and function of <strong>Web Application Firewalls (WAF)</strong> at Layer 7 to understand how defensive mechanisms filter malicious payloads (SQLi, XSS) before they reach the core application logic. Mapped the flow of traffic through <strong>Load Balancers</strong> and evaluated the mechanics of automated health checks and redundancy failovers.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>2. Infrastructure Scalability & Content Delivery</h3>
+            <p>Evaluated the architectural necessity of <strong>Content Delivery Networks (CDNs)</strong> for caching static assets and obfuscating the origin server's true IP address. Analyzed web server software configuration, specifically focusing on <strong>Virtual Host</strong> routing and document root directory allocation.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>3. Dynamic Content Generation</h3>
+            <p>Differentiated between static asset delivery and dynamic content generation via backend scripting languages (PHP, Python). Demonstrated a clear understanding of the boundary between client-side rendering and server-side processing, a critical distinction for identifying remote code execution (RCE) vectors.</p>
+        </div>
+
+    </div>
+
 </div>
 
+<script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // Disable common developer tools keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || 
+           (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+           (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'j' || e.key === 'c')) || 
+           ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u'))) {
+            e.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
