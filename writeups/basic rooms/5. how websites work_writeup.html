@@ -3,102 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Application Security: Front-End Architecture & Injection Attacks</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Training Log: How Websites Work</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #161b22;
-            padding: 40px;
-            border-radius: 8px;
-            border-top: 5px solid #3fb950;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #3fb950;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-            font-size: 2.2em;
-        }
-        h2 {
-            color: #58a6ff;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #d2a8ff;
-        }
-        p {
-            font-size: 1.1em;
-        }
-        .highlight {
-            background-color: #1f2428;
             padding: 15px;
-            border-left: 4px solid #f85149;
-            margin: 20px 0;
-            font-family: 'Courier New', Courier, monospace;
-            border-radius: 0 5px 5px 0;
         }
-        .badge {
+
+        /* ─── UI: Center Content Wrapper ─── */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 40px;
+            z-index: 10;
+        }
+
+        /* ─── UI: Back Button ─── */
+        .back-btn {
             display: inline-block;
-            background-color: #238636;
-            color: #ffffff;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9em;
+            margin-bottom: 30px;
+            color: #58a6ff;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .back-btn:hover { 
+            color: #39ff14; 
+        }
+
+        /* ─── TYPOGRAPHY & HEADINGS ─── */
+        h1 {
+            color: #39ff14;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 10px;
+            font-size: 1.6em;
             margin-bottom: 20px;
         }
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
+        
+        .briefing-box {
+            background-color: #161b22;
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.05em;
         }
-        li {
+
+        /* ─── CONCEPT GRID ─── */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .concept-card {
+            background-color: #21262d;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .concept-card h3 {
+            color: #d2a8ff;
+            margin-top: 0;
             margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+        .concept-card p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+        code {
+            background-color: #010409;
+            color: #39ff14;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* ─── DEFENSE: Disable Text Selection ─── */
+        body { 
+            user-select: none; 
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+        }
+        
+        /* ─── DEFENSE: Watermark Overlay ─── */
+        body::after {
+            content: ''; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: 9999; 
+            pointer-events: none; /* CRITICAL: Allows clicking through the watermark */
+            background-repeat: repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' fill='%2300ff41' fill-opacity='0.15' font-size='20' font-family='monospace' font-weight='bold' text-anchor='middle' transform='rotate(-45 150 150)'%3Eandrew4ng@hotmail.com%3C/text%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <span class="badge">TryHackMe Room Completed</span>
-    <h1>Web Application Security: Front-End Architecture & Input Validation</h1>
+<div class="content-wrapper">
     
-    <h2>Executive Summary</h2>
-    <p>I recently completed a technical lab focused on the structural integrity of front-end web applications. This engagement simulated an external web assessment, requiring me to audit raw client-side source code for exposed developer credentials, manipulate document object models via JavaScript, and exploit input sanitization failures to execute HTML injection attacks.</p>
+    <a href="../../index.html" class="back-btn">< Return to Dashboard</a>
 
-    <h2>Core Competencies Validated</h2>
+    <h1>Foundational Training: Front-End Architecture & Injection Attacks</h1>
     
-    <h3>1. Client-Side Source Code Auditing</h3>
-    <ul>
-        <li>Conducted manual inspection of raw HTML, CSS, and JavaScript source code to identify structural misconfigurations.</li>
-        <li>Successfully extracted plaintext administrative credentials left exposed in unsanitized developer comments, highlighting the critical risk of <b>Sensitive Data Exposure</b> in client-side artifacts.</li>
-    </ul>
-
-    <h3>2. Input Sanitization & HTML Injection</h3>
-    <ul>
-        <li>Identified an unvalidated text input parameter that failed to properly encode user-supplied data.</li>
-        <li>Crafted and deployed a targeted <b>HTML Injection</b> payload (utilizing raw Anchor and Image tags) to manipulate the visual rendering of the target application, proving the viability of client-side spoofing and redirect attacks.</li>
-    </ul>
-
-    <h3>3. JavaScript DOM Manipulation</h3>
-    <ul>
-        <li>Analyzed front-end interactivity scripts to map the application's client-side attack surface.</li>
-        <li>Manipulated HTML element ID attributes to force custom JavaScript execution, demonstrating the foundational mechanics required for advanced Cross-Site Scripting (XSS) exploitation.</li>
-    </ul>
-
-    <h2>Key Takeaways</h2>
-    <div class="highlight">
-        "A web application is only as secure as its input fields. Failing to sanitize user data doesn't just break the visual layout of a page; it turns the application into a weapon against its own users. Understanding the precise interaction between HTML structure and JavaScript execution is the first step in mastering web application penetration testing."
+    <div class="briefing-box">
+        <strong>Module Objective:</strong> Validated foundational mechanics of client-side web application security. A web application is only as secure as its input fields. By auditing raw client-side source code for exposed credentials, manipulating Document Object Models (DOM) via JavaScript, and exploiting input sanitization failures, I demonstrated the ability to execute HTML injection attacks and map client-side attack surfaces before engaging backend systems.
     </div>
+
+    <div class="concept-grid">
+        
+        <div class="concept-card">
+            <h3>1. Client-Side Source Code Auditing</h3>
+            <p>Conducted manual inspection of raw HTML, CSS, and JavaScript source code to identify structural misconfigurations. Successfully extracted plaintext administrative credentials left exposed in unsanitized developer comments, highlighting the critical risk of <strong>Sensitive Data Exposure</strong> in client-side artifacts.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>2. Input Sanitization & HTML Injection</h3>
+            <p>Identified an unvalidated text input parameter that failed to properly encode user-supplied data. Crafted and deployed a targeted <strong>HTML Injection</strong> payload (utilizing raw Anchor and Image tags) to manipulate the visual rendering of the target application, proving the viability of client-side spoofing and redirect attacks.</p>
+        </div>
+
+        <div class="concept-card">
+            <h3>3. JavaScript DOM Manipulation</h3>
+            <p>Analyzed front-end interactivity scripts to map the application's client-side attack surface. Manipulated HTML element ID attributes to force custom JavaScript execution, demonstrating the foundational mechanics required for advanced <strong>Cross-Site Scripting (XSS)</strong> exploitation.</p>
+        </div>
+
+    </div>
+
 </div>
 
+<script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // Disable common developer tools keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || 
+           (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+           (e.metaKey && e.altKey && (e.key === 'i' || e.key === 'j' || e.key === 'c')) || 
+           ((e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && e.key === 'u'))) {
+            e.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
